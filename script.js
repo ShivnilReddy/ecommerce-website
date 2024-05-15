@@ -47,6 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error adding item to cart:', error));
     }
 
+    function removeItemFromCart(itemId) {
+        const cartItemIndex = cart.findIndex(item => item.id === itemId);
+        if (cartItemIndex > -1) {
+            cart.splice(cartItemIndex, 1);
+            updateCart();
+            renderCart();
+        }
+    }
+
     function updateCart() {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
@@ -59,13 +68,24 @@ document.addEventListener('DOMContentLoaded', () => {
             let total = 0;
             cart.forEach(item => {
                 const cartItemDiv = document.createElement('div');
-                cartItemDiv.textContent = `${item.name} - $${item.price} x ${item.quantity}`;
+                cartItemDiv.innerHTML = `
+                    ${item.name} - $${item.price} x ${item.quantity}
+                    <button class="remove-from-cart" data-id="${item.id}">Remove</button>
+                `;
                 cartItemsContainer.appendChild(cartItemDiv);
                 total += item.price * item.quantity;
             });
             if (cartTotal) {
                 cartTotal.textContent = total.toFixed(2);
             }
+
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.remove-from-cart').forEach(button => {
+                button.addEventListener('click', event => {
+                    const itemId = event.target.getAttribute('data-id');
+                    removeItemFromCart(itemId);
+                });
+            });
         }
     }
 
