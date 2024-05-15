@@ -29,11 +29,28 @@ main {
     flex-wrap: wrap;
     gap: 1rem;
 }
+
 .item {
     border: 1px solid #ccc;
     padding: 1rem;
     width: calc(33.333% - 2rem);
+    margin: 1rem;
+    text-align: center;
 }
+
 .item img {
     max-width: 100%;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+}
+
+.cart-item img {
+    max-width: 50px;
+    margin-right: 1rem;
 }
