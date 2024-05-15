@@ -90,6 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function showNotification() {
+        const notification = document.getElementById('notification');
+        notification.classList.add('show');
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 2000); // Display notification for 2 seconds
+    }
+
     if (document.getElementById('checkout')) {
         document.getElementById('checkout').addEventListener('click', (e) => {
             e.preventDefault();
