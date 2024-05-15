@@ -357,3 +357,34 @@ footer {
 .login-container form button:hover {
     background-color: #9B59B6;
 }
+
+/* General button styles */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Add to Cart button */
+.add-to-cart {
+    background-color: #4CAF50;
+    color: white;
+    margin-top: 10px;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049;
+}
+
+/* Remove from Cart button */
+.remove-from-cart {
+    background-color: #f44336;
+    color: white;
+    margin-left: 10px;
+}
+
+.remove-from-cart:hover {
+    background-color: #d32f2f;
+}
