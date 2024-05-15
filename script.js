@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+    // Fetch items and populate the store
     fetch('data/items.json')
         .then(response => response.json())
         .then(data => {
@@ -90,9 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function showNotification() {
+    function showNotification(message) {
         const notification = document.getElementById('notification');
-        notification.classList.add('show');
+        notification.textContent = message;
+        notification.classlist.add('show');
         setTimeout(() => {
             notification.classList.remove('show');
         }, 2000); // Display notification for 2 seconds
