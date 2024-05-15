@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 updateCart();
                 renderCart();
+                showNotification('Item added to cart!');
             })
             .catch(error => console.error('Error adding item to cart:', error));
     }
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cart.splice(cartItemIndex, 1);
             updateCart();
             renderCart();
+            showNotification('Item removed from cart!');
         }
     }
 
