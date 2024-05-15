@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <nav id="navbar">
+        <img src="resources/Logo.png" alt="Logo" class="logo">
+        <ul id="menu">
+            <li><a href="index.html" class="menu-item">HOME</a></li>
+            <li><a href="#" class="menu-item">LIGHT THE BEAM</a></li>
+            <li><a href="store.html" class="menu-item">TEAM STORE</a></li>
+            <li><a href="login.html" class="menu-item">LOGIN</a></li>
+        </ul>
+    </nav>
+    <div class="login-container">
         <h1>Login</h1>
-    </header>
-    <main>
         <form id="login-form">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password">
             <button type="submit">Login</button>
         </form>
-    </main>
-    <script src="js/main.js"></script>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
