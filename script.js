@@ -58,4 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         cartTotal.textContent = total.toFixed(2);
     }
+    // Redirect to checkout page
+    document.getElementById('checkout').addEventListener('click', () => {
+        window.location.href = 'checkout.html';
+    });
 });
