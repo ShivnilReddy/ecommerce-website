@@ -5,14 +5,49 @@
             "name": "Jersey 1",
             "description": "Description for Jersey 1",
             "price": 49.99,
-            "image": "resources/jersey1.jpg"
+            "image": "Jersey1.png"
         },
         {
             "id": "2",
             "name": "Jersey 2",
             "description": "Description for Jersey 2",
             "price": 59.99,
-            "image": "resources/jersey2.jpg"
+            "image": "Jersey2.png"
+        },
+        {
+            "id": "3",
+            "name": "Jersey 3",
+            "description": "Description for Jersey 3",
+            "price": 69.99,
+            "image": "Jersey3.png"
+        },
+        {
+            "id": "4",
+            "name": "Jersey 4",
+            "description": "Description for Jersey 4",
+            "price": 79.99,
+            "image": "Jersey4.png"
+        },
+        {
+            "id": "5",
+            "name": "Jersey 5",
+            "description": "Description for Jersey 5",
+            "price": 89.99,
+            "image": "Jersey5.png"
+        },
+        {
+            "id": "6",
+            "name": "Jersey 6",
+            "description": "Description for Jersey 6",
+            "price": 99.99,
+            "image": "Jersey6.png"
+        },
+        {
+            "id": "7",
+            "name": "Jersey 7",
+            "description": "Description for Jersey 7",
+            "price": 109.99,
+            "image": "Jersey7.png"
         }
     ]
 }
