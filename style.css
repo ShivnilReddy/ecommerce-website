@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+main {
+    padding: 2rem;
+}
+#items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.item {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    width: calc(33.333% - 2rem);
+}
+.item img {
+    max-width: 100%;
+}
