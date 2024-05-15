@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', event => {
                 const itemId = event.target.getAttribute('data-id');
+                console.log('Add to Cart button clicked', itemId); // Debug log
                 addItemToCart(itemId);
             });
         });
@@ -52,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function removeItemFromCart(itemId) {
         const cartItemIndex = cart.findIndex(item => item.id === itemId);
         if (cartItemIndex > -1) {
+            console.log('Removing item with ID:', itemId); // Debug log
             cart.splice(cartItemIndex, 1);
             updateCart();
             renderCart();
@@ -86,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.remove-from-cart').forEach(button => {
                 button.addEventListener('click', event => {
                     const itemId = event.target.getAttribute('data-id');
+                    console.log('Remove from Cart button clicked', itemId); // Debug log
                     removeItemFromCart(itemId);
                 });
             });
@@ -94,10 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showNotification(message) {
         const notification = document.getElementById('notification');
+        console.log('Showing notification:', message); // Debug log
         notification.textContent = message;
-        notification.classlist.add('show');
+        notification.classList.add('show');
         setTimeout(() => {
             notification.classList.remove('show');
+            console.log('Hiding notification'); // Debug log
         }, 2000); // Display notification for 2 seconds
     }
 
