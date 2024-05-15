@@ -5,14 +5,14 @@
             "name": "Jersey 1",
             "description": "Description for Jersey 1",
             "price": 49.99,
-            "image": "images/jersey1.jpg"
+            "image": "resources/jersey1.jpg"
         },
         {
             "id": "2",
             "name": "Jersey 2",
             "description": "Description for Jersey 2",
             "price": 59.99,
-            "image": "images/jersey2.jpg"
+            "image": "resources/jersey2.jpg"
         }
     ]
 }
