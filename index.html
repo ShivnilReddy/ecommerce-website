@@ -1,31 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sacramento Kings</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="icon" href="./resources/Logo.png" type="image/png">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="header">
         <nav id="navbar">
             <img src="./resources/Logo.png" alt="Logo" class="logo">
             <ul id="menu">
-                <li><a href="index.html" class="menu-item">HOME</a></li>
+                <li><a href="#" class="menu-item">HOME</a></li>
                 <li><a href="#" class="menu-item">LIGHT THE BEAM</a></li>
-                <li><a href="store.html" class="menu-item">TEAM STORE</a></li>
-                <li><a href="login.html" class="menu-item">LOGIN</a></li>
+                <li><a href="#" class="menu-item">TEAM STORE</a></li>
+                <li><a href="#" class="menu-item">LOGIN</a></li>
            </ul>
         </nav>
     </div>
-    <div class="hero-text">
-        Sacramento Kings
-    </div>
+</nav>
+        <div class="hero-text">
+            Sacramento Kings
+        </div>
+
 
     <section class="flexbox-container">
 	    <div class="flexbox" id="uniforms">
@@ -59,42 +62,83 @@
                 <h2>2023-2024 Schedule</h2>
 	        	<img src="./resources/Schedule.jpg" alt="2023-2024 Schedule">
             </div>
-       
-    </section>
+        </section>
 
     <p class="text highlighted-section">
         CURRENT ROSTER: 0 Monk, 00 McGee, 3 Duarte, 5 Fox, 7 Vezenkov, 9 Huerter, 10 Sabonis, 13 Murray, 15 Mitchell, 17 Edwards, 18 Slawson, 20 C. Jones, 22 M. Jones, 23 Ellis, 25 Len, 31 Ford, 40 Barnes, 41 Lyles
     </p>
-
+            
     <p class="text highlighted-section">
         COACHING STAFF: [Head Coach]: Brown [Assistant Coaches]: Barbosa, Christie, Fernández, Loucks, Triano
     </p>
-
+        
     <p class="text highlighted-section">
         COME OUT TO THE GAME & SUPPORT THE TEAM! 
     </p>
-
+    
     <p class="text highlighted-section">
         GO KINGS!!!
     </p>
+    
+    
+    <script>
+    		var navbar = document.getElementById("navbar");
+				var menu = document.getElementById("menu");
+        
+        window.onscroll = function(){
+        		if(window.pageYOffset >= navbar.offsetHeight){
+            		navbar.classList.add("sticky");
+            }
+            else{
+            		navbar.classList.remove("sticky")
+            }
+        };
 
-    <script src="js/main.js"></script>
+	    document.getElementById('nextJersey').addEventListener('click', function() {
+            const jerseys = document.querySelectorAll('.jersey');
+            let currentIndex = findVisibleJersey(jerseys);
+            jerseys[currentIndex].style.display = 'none'; // Hide current jersey
+            const nextIndex = (currentIndex + 1) % jerseys.length; // Calculate next index, cycle back to 0 if at the end
+            jerseys[nextIndex].style.display = 'block'; // Show next jersey
+        });
 
-    <div class="subscription-form">
+        document.getElementById('prevJersey').addEventListener('click', function() {
+            const jerseys = document.querySelectorAll('.jersey');
+            let currentIndex = findVisibleJersey(jerseys);
+            jerseys[currentIndex].style.display = 'none'; // Hide current jersey
+            const prevIndex = (currentIndex - 1 + jerseys.length) % jerseys.length; // Calculate previous index, cycle to the end if at the beginning
+            jerseys[prevIndex].style.display = 'block'; // Show previous jersey
+        });
+
+        function findVisibleJersey(jerseys) {
+            for (let i = 0; i < jerseys.length; i++) {
+                if (jerseys[i].style.display === 'block' || getComputedStyle(jerseys[i]).display === 'block') {
+                    return i;
+                }
+            }
+            return 0; // Default to first jersey if none are visible (shouldn't happen in this setup)
+        }
+        
+    </script>
+    
+    
+     <div class="subscription-form">
         <form>
             <label for="email">Join the Kingdom:</label>
             <input type="email" id="email" name="email" placeholder="Enter email...">
             <button type="submit">Submit</button>
         </form>
     </div> 
-
+    
     <footer>
         <div class="footer-content">
+            <!-- Footer links or text -->
             <a href="#">About</a>
             <a href="#">Contact</a>
             <a href="#">Subscribe</a>
             <a href="#">Follow Us</a>
         </div>
     </footer>
+    
 </body>
 </html>
