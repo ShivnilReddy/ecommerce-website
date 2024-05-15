@@ -60,6 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Redirect to checkout page
     document.getElementById('checkout').addEventListener('click', () => {
+        e.preventDefault();
+        console.log("Checkout button clicked");
         window.location.href = 'checkout.html';
     });
 });
