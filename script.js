@@ -1,43 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const jerseys = document.querySelectorAll('.jersey');
-    let currentIndex = findVisibleJersey(jerseys);
+    fetch('data/items.json')
+        .then(response => response.json())
+        .then(data => {
+            const storeItemsContainer = document.getElementById('store-items');
+            data.items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+                itemDiv.innerHTML = `
+                    <img src="resources/${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                    <p>$${item.price}</p>
+                    <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
+                `;
+                storeItemsContainer.appendChild(itemDiv);
+            });
+            addEventListenersToButtons();
+        })
+        .catch(error => console.error('Error fetching items:', error));
 
-    // Check if the element exists before adding event listener
-    if (document.getElementById('nextJersey')) {
-        document.getElementById('nextJersey').addEventListener('click', () => {
-            jerseys[currentIndex].style.display = 'none';
-            currentIndex = (currentIndex + 1) % jerseys.length;
-            jerseys[currentIndex].style.display = 'block';
+    function addEventListenersToButtons() {
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', event => {
+                const itemId = event.target.getAttribute('data-id');
+                addItemToCart(itemId);
+            });
         });
     }
 
-    if (document.getElementById('prevJersey')) {
-        document.getElementById('prevJersey').addEventListener('click', () => {
-            jerseys[currentIndex].style.display = 'none';
-            currentIndex = (currentIndex - 1 + jerseys.length) % jerseys.length;
-            jerseys[currentIndex].style.display = 'block';
-        });
-    }
-
-    function findVisibleJersey(jerseys) {
-        for (let i = 0; i < jerseys.length; i++) {
-            if (jerseys[i].style.display === 'block' || getComputedStyle(jerseys[i]).display === 'block') {
-                return i;
-            }
-        }
-        return 0;
-    }
-
-    // Cart functionality
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartItemsContainer = document.querySelector('.cart-items');
-    const cartTotal = document.getElementById('cart-total');
+
+    function addItemToCart(itemId) {
+        fetch('data/items.json')
+            .then(response => response.json())
+            .then(data => {
+                const item = data.items.find(item => item.id === itemId);
+                const cartItem = cart.find(item => item.id === itemId);
+                if (cartItem) {
+                    cartItem.quantity++;
+                } else {
+                    cart.push({ ...item, quantity: 1 });
+                }
+                updateCart();
+                renderCart();
+            })
+            .catch(error => console.error('Error adding item to cart:', error));
+    }
 
     function updateCart() {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     function renderCart() {
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const cartTotal = document.getElementById('cart-total');
         if (cartItemsContainer) {
             cartItemsContainer.innerHTML = '';
             let total = 0;
@@ -53,30 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (document.querySelectorAll('.add-to-cart')) {
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', event => {
-                console.log('Add to Cart button clicked');  // Add this line
-                const item = event.target.parentElement;
-                const itemName = item.querySelector('h3').textContent;
-                const itemPrice = parseFloat(item.querySelector('p').textContent.substring(1));
-                addItemToCart(itemName, itemPrice);
-            });
-        });
-    }
-
-    function addItemToCart(name, price) {
-        const cartItem = cart.find(item => item.name === name);
-        if (cartItem) {
-            cartItem.quantity++;
-        } else {
-            cart.push({ name, price, quantity: 1 });
-        }
-        updateCart();
-        renderCart();
-    }
-
-    // Redirect to checkout page
     if (document.getElementById('checkout')) {
         document.getElementById('checkout').addEventListener('click', (e) => {
             e.preventDefault();
