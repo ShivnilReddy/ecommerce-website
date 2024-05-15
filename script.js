@@ -73,7 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
             let total = 0;
             cart.forEach(item => {
                 const cartItemDiv = document.createElement('div');
+                cartItemDiv.classList.add('cart-item');
                 cartItemDiv.innerHTML = `
+                    <img src="resources/${item.image}" alt="${item.name}" class="cart-item-image">
                     ${item.name} - $${item.price} x ${item.quantity}
                     <button class="remove-from-cart" data-id="${item.id}">Remove</button>
                 `;
