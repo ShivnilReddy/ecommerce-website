@@ -1,24 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Fetch items and populate the store
-    fetch('data/items.json')
+    fetch('items.json')
         .then(response => response.json())
         .then(data => {
-            const storeItemsContainer = document.getElementById('store-items');
-            data.items.forEach(item => {
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('item');
-                itemDiv.innerHTML = `
-                    <img src="resources/${item.image}" alt="${item.name}">
-                    <h3>${item.name}</h3>
-                    <p>${item.description}</p>
-                    <p>$${item.price}</p>
-                    <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
-                `;
-                storeItemsContainer.appendChild(itemDiv);
+            const storeContainer = document.getElementById('store-container');
+            data.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'item';
+                
+                const imgElement = document.createElement('img');
+                imgElement.src = item.image;
+                imgElement.alt = item.description;
+
+                const descriptionElement = document.createElement('p');
+                descriptionElement.textContent = item.description;
+
+                const buttonElement = document.createElement('button');
+                buttonElement.textContent = "Add to Cart";
+                buttonElement.className = 'add-to-cart';
+
+                itemElement.appendChild(imgElement);
+                itemElement.appendChild(descriptionElement);
+                itemElement.appendChild(buttonElement);
+
+                storeContainer.appendChild(itemElement);
             });
-            addEventListenersToButtons();
         })
         .catch(error => console.error('Error fetching items:', error));
+});
+
 
     function addEventListenersToButtons() {
         document.querySelectorAll('.add-to-cart').forEach(button => {
