@@ -50,11 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error adding item to cart:', error));
     }
 
-    function removeItemFromCart(itemId) {
-        const cartItemIndex = cart.findIndex(item => item.id === itemId);
-        if (cartItemIndex > -1) {
-            console.log('Removing item with ID:', itemId); // Debug log
-            cart.splice(cartItemIndex, 1);
+     function removeItemFromCart(itemId) {
+        const cartItem = cart.find(item => item.id === itemId);
+        if (cartItem) {
+            if (cartItem.quantity > 1) {
+                cartItem.quantity--;
+            } else {
+                const cartItemIndex = cart.findIndex(item => item.id === itemId);
+                cart.splice(cartItemIndex, 1);
+            }
             updateCart();
             renderCart();
             showNotification('Item removed from cart!');
