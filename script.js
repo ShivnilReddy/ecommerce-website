@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('items.json')
+    fetch('data/items.json')
         .then(response => response.json())
         .then(data => {
-            const storeContainer = document.getElementById('store-container');
+            const storeContainer = document.getElementById('store-items');
             data.forEach(item => {
                 const itemElement = document.createElement('div');
                 itemElement.className = 'item';
@@ -11,19 +11,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 imgElement.src = item.image;
                 imgElement.alt = item.description;
 
+                const nameElement = document.createElement('h3');
+                nameElement.textContent = item.name;
+                
                 const descriptionElement = document.createElement('p');
                 descriptionElement.textContent = item.description;
 
+                const priceElement = document.createElement('p');
+                priceElement.textContent = `$${item.price.toFixed(2)}`;
+                
                 const buttonElement = document.createElement('button');
                 buttonElement.textContent = "Add to Cart";
                 buttonElement.className = 'add-to-cart';
-
+                buttonElement.setAttribute('data-id', item.id);
+                
                 itemElement.appendChild(imgElement);
+                itemElement.appendChild(nameElement);
                 itemElement.appendChild(descriptionElement);
+                itemElement.appendChild(priceElement);
                 itemElement.appendChild(buttonElement);
 
                 storeContainer.appendChild(itemElement);
             });
+            addEventListenersToButtons();
         })
         .catch(error => console.error('Error fetching items:', error));
 });
@@ -33,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', event => {
                 const itemId = event.target.getAttribute('data-id');
-                console.log('Add to Cart button clicked', itemId); // Debug log
+                console.log('Add to Cart button clicked', itemId); 
                 addItemToCart(itemId);
             });
         });
@@ -103,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.remove-from-cart').forEach(button => {
                 button.addEventListener('click', event => {
                     const itemId = event.target.getAttribute('data-id');
-                    console.log('Remove from Cart button clicked', itemId); // Debug log
+                    console.log('Remove from Cart button clicked', itemId); 
                     removeItemFromCart(itemId);
                 });
             });
@@ -112,12 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showNotification(message) {
         const notification = document.getElementById('notification');
-        console.log('Showing notification:', message); // Debug log
+        console.log('Showing notification:', message); 
         notification.textContent = message;
         notification.classList.add('show');
         setTimeout(() => {
             notification.classList.remove('show');
-            console.log('Hiding notification'); // Debug log
+            console.log('Hiding notification'); 
         }, 2000); // Display notification for 2 seconds
     }
 
