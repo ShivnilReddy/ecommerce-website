@@ -260,7 +260,7 @@ footer {
     flex-direction: column;
     justify-content: space-between;}
 
-.item {
+.item p {
     flex-grow: 1;
     margin-top: 10px;
 
