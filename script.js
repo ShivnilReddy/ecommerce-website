@@ -1,30 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('data/items.json')
+    fetch('data/items.json')  // Ensure this path is correct
         .then(response => response.json())
         .then(data => {
             const storeContainer = document.getElementById('store-items');
-            data.forEach(item => {
+            data.items.forEach(item => {
                 const itemElement = document.createElement('div');
                 itemElement.className = 'item';
                 
                 const imgElement = document.createElement('img');
-                imgElement.src = item.image;
+                imgElement.src = `resources/${item.image}`;
                 imgElement.alt = item.description;
 
                 const nameElement = document.createElement('h3');
                 nameElement.textContent = item.name;
-                
+
                 const descriptionElement = document.createElement('p');
                 descriptionElement.textContent = item.description;
 
                 const priceElement = document.createElement('p');
                 priceElement.textContent = `$${item.price.toFixed(2)}`;
-                
+
                 const buttonElement = document.createElement('button');
                 buttonElement.textContent = "Add to Cart";
                 buttonElement.className = 'add-to-cart';
                 buttonElement.setAttribute('data-id', item.id);
-                
+
                 itemElement.appendChild(imgElement);
                 itemElement.appendChild(nameElement);
                 itemElement.appendChild(descriptionElement);
@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 storeContainer.appendChild(itemElement);
             });
+
+            // Add event listeners after items are created
             addEventListenersToButtons();
         })
         .catch(error => console.error('Error fetching items:', error));
