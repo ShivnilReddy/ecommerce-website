@@ -263,7 +263,7 @@ footer {
 .item img {
     max-width: 100%;
     max-height: auto; 
-    object-fit: cover;
+    
 }
 
 .add-to-cart {
