@@ -118,6 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'checkout.html';
         });
     }
+
+    renderCart();
+    
     // Login function
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
@@ -141,5 +144,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('isLoggedIn') && window.location.pathname === '/login.html') {
         window.location.href = 'profile.html';
     }
-    renderCart();
+    
 });
