@@ -308,14 +308,14 @@ footer {
     align-items: center;
     margin-bottom: 10px;
     border: 2px solid #ddd;
-    box-shadow: 0 8px 16 px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8 px rgba(0,0,0,0.1);
     border-radius: 5px;
     padding: 10px;
 }
 
 .cart-item-image {
-    width: 100px !important; /* Adjust width */
-    height: 100px !important; /* Adjust height */
+    width: 100px ; /* Adjust width */
+    height: 100px ; /* Adjust height */
     margin-right: 10px;
     object-fit: cover;
 }
