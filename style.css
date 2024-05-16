@@ -244,18 +244,27 @@ footer {
 
 /* Store Page */
 .store-container {
-    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;: 20px;
 }
 
 .store-items {
+    width: calc(33.333% - 20px); /* Adjust width for consistent sizing */
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-between;
 }
 
 .item {
     flex: 1;
-    min-width: calc(33.333% - 10px);
     margin: 10px;
     text-align: center;
 }
