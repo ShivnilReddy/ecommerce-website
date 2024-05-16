@@ -292,6 +292,19 @@ footer {
     text-align: right;
 }
 
+/* Cart item styles */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cart-item-image {
+    width: 20px; /* Adjust width */
+    height: 20px; /* Adjust height */
+    margin-right: 10px;
+}
+
 /* Profile Page */
 .profile-container {
     padding: 20px;
