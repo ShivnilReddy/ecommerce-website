@@ -118,6 +118,28 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'checkout.html';
         });
     }
+    // Login function
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+    
+            // Simple validation logic (replace with actual authentication logic)
+            if (username === 'user' && password === 'password') {
+                localStorage.setItem('isLoggedIn', true);
+                window.location.href = 'profile.html';
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        });
+    }
 
+    // Check if user is logged in and redirect if necessary
+    if (localStorage.getItem('isLoggedIn') && window.location.pathname === '/login.html') {
+        window.location.href = 'profile.html';
+    }
     renderCart();
 });
