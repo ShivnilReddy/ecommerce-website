@@ -1,151 +1,110 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Fetch items and populate the store
-    fetch('data/items.json')
-        .then(response => response.json())
-        .then(data => {
-            const storeItemsContainer = document.getElementById('store-items');
-            data.items.forEach(item => {
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('item');
-                itemDiv.innerHTML = `
-                    <img src="resources/${item.image}" alt="${item.name}">
-                    <h3>${item.name}</h3>
-                    <p>${item.description}</p>
-                    <p>$${item.price}</p>
-                    <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
-                `;
-                storeItemsContainer.appendChild(itemDiv);
-            });
-            addEventListenersToButtons();
-        })
-        .catch(error => console.error('Error fetching items:', error));
+  // Load products
+  fetch('data/items.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      displayProducts(data);
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+    });
 
+  // Load cart from localStorage
+  loadCart();
+
+  // Login form submission
+  const loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    loginForm.addEventListener('submit', handleLogin);
+  }
+
+  // Cart button click
+  const cartButton = document.getElementById('cartButton');
+  if (cartButton) {
+    cartButton.addEventListener('click', displayCart);
+  }
 });
 
+// Function to display the products on the webpage
+function displayProducts(items) {
+  const productContainer = document.getElementById('products');
+  if (!productContainer) {
+    console.error('Product container not found');
+    return;
+  }
 
-    function addEventListenersToButtons() {
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', event => {
-                const itemId = event.target.getAttribute('data-id');
-                console.log('Add to Cart button clicked', itemId); 
-                addItemToCart(itemId);
-            });
-        });
-    }
+  items.forEach(item => {
+    const productElement = document.createElement('div');
+    productElement.className = 'product';
+    productElement.innerHTML = `
+      <img src="resources/${item.image}" alt="${item.name}">
+      <h2>${item.name}</h2>
+      <p>${item.description}</p>
+      <p>Price: $${item.price}</p>
+      <button onclick="addToCart(${item.id})">Add to Cart</button>
+    `;
+    productContainer.appendChild(productElement);
+  });
+}
 
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+// Function to handle login
+function handleLogin(event) {
+  event.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
 
-    function addItemToCart(itemId) {
-        fetch('data/items.json')
-            .then(response => response.json())
-            .then(data => {
-                const item = data.items.find(item => item.id === itemId);
-                const cartItem = cart.find(item => item.id === itemId);
-                if (cartItem) {
-                    cartItem.quantity++;
-                } else {
-                    cart.push({ ...item, quantity: 1 });
-                }
-                updateCart();
-                renderCart();
-                showNotification('Item added to cart!');
-            })
-            .catch(error => console.error('Error adding item to cart:', error));
-    }
+  // Simple login logic (for demo purposes)
+  if (username === 'user' && password === 'password') {
+    localStorage.setItem('loggedIn', true);
+    alert('Login successful!');
+    window.location.href = 'index.html'; // Redirect to homepage after login
+  } else {
+    alert('Invalid username or password.');
+  }
+}
 
-     function removeItemFromCart(itemId) {
-        const cartItem = cart.find(item => item.id === itemId);
-        if (cartItem) {
-            if (cartItem.quantity > 1) {
-                cartItem.quantity--;
-            } else {
-                const cartItemIndex = cart.findIndex(item => item.id === itemId);
-                cart.splice(cartItemIndex, 1);
-            }
-            updateCart();
-            renderCart();
-            showNotification('Item removed from cart!');
-        }
-    }
+// Function to add item to cart
+function addToCart(itemId) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const itemIndex = cart.findIndex(item => item.id === itemId);
 
-    function updateCart() {
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }
+  if (itemIndex > -1) {
+    cart[itemIndex].quantity += 1;
+  } else {
+    cart.push({ id: itemId, quantity: 1 });
+  }
 
-    function renderCart() {
-        const cartItemsContainer = document.querySelector('.cart-items');
-        const cartTotal = document.getElementById('cart-total');
-        if (cartItemsContainer) {
-            cartItemsContainer.innerHTML = '';
-            let total = 0;
-            cart.forEach(item => {
-                const cartItemDiv = document.createElement('div');
-                cartItemDiv.classList.add('cart-item');
-                cartItemDiv.innerHTML = `
-                    <img src="resources/${item.image}" alt="${item.name}" class="cart-item-image">
-                    ${item.name} - $${item.price} x ${item.quantity}
-                    <button class="remove-from-cart" data-id="${item.id}">Remove</button>
-                `;
-                cartItemsContainer.appendChild(cartItemDiv);
-                total += item.price * item.quantity;
-            });
-            if (cartTotal) {
-                cartTotal.textContent = total.toFixed(2);
-            }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert('Item added to cart!');
+}
 
-            // Add event listeners to remove buttons
-            document.querySelectorAll('.remove-from-cart').forEach(button => {
-                button.addEventListener('click', event => {
-                    const itemId = event.target.getAttribute('data-id');
-                    console.log('Remove from Cart button clicked', itemId); 
-                    removeItemFromCart(itemId);
-                });
-            });
-        }
-    }
+// Function to load cart from localStorage
+function loadCart() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartContainer = document.getElementById('cartItems');
+  if (cartContainer) {
+    cartContainer.innerHTML = ''; // Clear the cart container
+    cart.forEach(item => {
+      const cartItemElement = document.createElement('div');
+      cartItemElement.className = 'cart-item';
+      cartItemElement.innerHTML = `
+        <p>Item ID: ${item.id}</p>
+        <p>Quantity: ${item.quantity}</p>
+      `;
+      cartContainer.appendChild(cartItemElement);
+    });
+  }
+}
 
-    function showNotification(message) {
-        const notification = document.getElementById('notification');
-        console.log('Showing notification:', message); 
-        notification.textContent = message;
-        notification.classList.add('show');
-        setTimeout(() => {
-            notification.classList.remove('show');
-            console.log('Hiding notification'); 
-        }, 2000); // Display notification for 2 seconds
-    }
-
-    if (document.getElementById('checkout')) {
-        document.getElementById('checkout').addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'checkout.html';
-        });
-    }
-
-    renderCart();
-    
-    // Login function
-    const loginForm = document.getElementById('login-form');
-    if (loginForm) {
-        loginForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-    
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-    
-            // Simple validation logic (replace with actual authentication logic)
-            if (username === 'user' && password === 'password') {
-                localStorage.setItem('isLoggedIn', true);
-                window.location.href = 'profile.html';
-            } else {
-                document.getElementById('login-error').style.display = 'block';
-            }
-        });
-    }
-
-    // Check if user is logged in and redirect if necessary
-    if (localStorage.getItem('isLoggedIn') && window.location.pathname === '/login.html') {
-        window.location.href = 'profile.html';
-    }
-    
-});
+// Function to display cart
+function displayCart() {
+  const cartContainer = document.getElementById('cartItems');
+  if (cartContainer) {
+    loadCart();
+  }
+}
