@@ -307,12 +307,17 @@ footer {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8 px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .cart-item-image {
-    width: 60px; /* Adjust width */
-    height: 60px; /* Adjust height */
+    width: 60px !important; /* Adjust width */
+    height: 60px !important; /* Adjust height */
     margin-right: 10px;
+    object-fit: cover;
 }
 
 /* Profile Page */
