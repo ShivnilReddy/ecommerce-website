@@ -265,8 +265,10 @@ footer {
 }
 
 .item {
-    flex-grow: 1;
-    margin-top: 10px;
+    flex: 1;
+    min-width: calc(33.333% - 10px);
+    margin: 10px;
+    text-align: center;
 }
 
 .item img {
