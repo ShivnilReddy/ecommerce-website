@@ -1,43 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('data/items.json')  // Ensure this path is correct
+    // Fetch items and populate the store
+    fetch('data/items.json')
         .then(response => response.json())
         .then(data => {
-            const storeContainer = document.getElementById('store-items');
+            const storeItemsContainer = document.getElementById('store-items');
             data.items.forEach(item => {
-                const itemElement = document.createElement('div');
-                itemElement.className = 'item';
-                
-                const imgElement = document.createElement('img');
-                imgElement.src = `resources/${item.image}`;
-                imgElement.alt = item.description;
-
-                const nameElement = document.createElement('h3');
-                nameElement.textContent = item.name;
-
-                const descriptionElement = document.createElement('p');
-                descriptionElement.textContent = item.description;
-
-                const priceElement = document.createElement('p');
-                priceElement.textContent = `$${item.price.toFixed(2)}`;
-
-                const buttonElement = document.createElement('button');
-                buttonElement.textContent = "Add to Cart";
-                buttonElement.className = 'add-to-cart';
-                buttonElement.setAttribute('data-id', item.id);
-
-                itemElement.appendChild(imgElement);
-                itemElement.appendChild(nameElement);
-                itemElement.appendChild(descriptionElement);
-                itemElement.appendChild(priceElement);
-                itemElement.appendChild(buttonElement);
-
-                storeContainer.appendChild(itemElement);
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+                itemDiv.innerHTML = `
+                    <img src="resources/${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                    <p>$${item.price}</p>
+                    <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
+                `;
+                storeItemsContainer.appendChild(itemDiv);
             });
-
-            // Add event listeners after items are created
             addEventListenersToButtons();
         })
         .catch(error => console.error('Error fetching items:', error));
+
 });
 
 
