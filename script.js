@@ -50,11 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error adding item to cart:', error));
     }
 
-    function removeItemFromCart(itemId) {
-        const cartItemIndex = cart.findIndex(item => item.id === itemId);
-        if (cartItemIndex > -1) {
-            console.log('Removing item with ID:', itemId); // Debug log
-            cart.splice(cartItemIndex, 1);
+     function removeItemFromCart(itemId) {
+        const cartItem = cart.find(item => item.id === itemId);
+        if (cartItem) {
+            if (cartItem.quantity > 1) {
+                cartItem.quantity--;
+            } else {
+                const cartItemIndex = cart.findIndex(item => item.id === itemId);
+                cart.splice(cartItemIndex, 1);
+            }
             updateCart();
             renderCart();
             showNotification('Item removed from cart!');
@@ -116,4 +120,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderCart();
+    
+    // Login function
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+    
+            // Simple validation logic (replace with actual authentication logic)
+            if (username === 'user' && password === 'password') {
+                localStorage.setItem('isLoggedIn', true);
+                window.location.href = 'profile.html';
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        });
+    }
+
+    // Check if user is logged in and redirect if necessary
+    if (localStorage.getItem('isLoggedIn') && window.location.pathname === '/login.html') {
+        window.location.href = 'profile.html';
+    }
+    
 });
