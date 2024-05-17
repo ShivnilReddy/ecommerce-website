@@ -346,7 +346,7 @@ footer {
 }
 
 .profile-links li {
-    margin: 15px 0;
+    margin: 30px 0;
     text-align: center;
 }
 
@@ -375,6 +375,9 @@ footer {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    display: block; /* Make the button block-level */
+    margin: 20px auto 0; /* Center the button and add space above it */
+    text-align: center;
 }
 
 .logout-button:hover {
