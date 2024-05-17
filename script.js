@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-    
 
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -129,12 +128,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function showNotification(message) {
         const notification = document.getElementById('notification');
         console.log('Showing notification:', message); // Debug log
-        notification.textContent = message;
-        notification.classList.add('show');
-        setTimeout(() => {
-            notification.classList.remove('show');
-            console.log('Hiding notification'); // Debug log
-        }, 2000); // Display notification for 2 seconds
+        if (notification) {
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+                console.log('Hiding notification'); // Debug log
+            }, 2000); // Display notification for 2 seconds
+        }
     }
 
     if (document.getElementById('checkout')) {
@@ -145,22 +146,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderCart();
-    
+
     // Login function
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
-    
+
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-    
+
             // Simple validation logic (replace with actual authentication logic)
             if (username === 'user' && password === 'password') {
                 localStorage.setItem('isLoggedIn', true);
                 window.location.href = 'profile.html';
             } else {
-                document.getElementById('login-error').style.display = 'block';
+                const loginError = document.getElementById('login-error');
+                if (loginError) {
+                    loginError.style.display = 'block';
+                }
             }
         });
     }
@@ -185,3 +189,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
