@@ -253,14 +253,14 @@ footer {
 
 /* Store Page */
 .store-container {
-    display: grid;
-
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
 }
 
-.store-items {
-   
+.item {
+    flex: 1 1 calc(33.333% - 40px); /* 3 items per row with spacing */
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -272,16 +272,9 @@ footer {
     justify-content: space-between;
 }
 
-.item {
-    flex: 1;
-    margin: 10px;
-    text-align: center;
-}
-
 .item img {
     max-width: 100%;
-    max-height: auto; 
-    
+    height: auto;
 }
 
 .add-to-cart {
