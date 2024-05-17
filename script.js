@@ -1,13 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Existing cart functionality
-    // Fetch items and populate the store
-    fetch('data/items.json')
-        .then(response => response.json())
+    // Fetch items and populate the store from items.json    
+    fetch('data/items.json')//fetches JSON file
+        .then(response => response.json())//once received, converts to json
+        //after conversion , data is processed
         .then(data => {
+            //finds container where items will be displayed
             const storeItemsContainer = document.getElementById('store-items');
+            //iterates for each item
             data.items.forEach(item => {
+                //creates new div element for new item
                 const itemDiv = document.createElement('div');
+                //add class 'item' to div
                 itemDiv.classList.add('item');
+                //set inner html of div with item details
                 itemDiv.innerHTML = `
                     <img src="resources/${item.image}" alt="${item.name}">
                     <h3>${item.name}</h3>
@@ -15,12 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>$${item.price}</p>
                     <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
                 `;
+                //put new item div in store items container
                 storeItemsContainer.appendChild(itemDiv);
             });
-            addEventListenersToButtons();
+            addEventListenersToButtons();  // Add event listeners to 'Add to Cart' buttons       
         })
+        
+        //error message for fetching issues
         .catch(error => console.error('Error fetching items:', error));
 
+  
+    
+    
     function addEventListenersToButtons() {
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', event => {
@@ -29,9 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
+   
+    
+    
+    //initialize cart from local storage or empty array
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+    
+    
+    //add items to cart
     function addItemToCart(itemId) {
         fetch('data/items.json')
             .then(response => response.json())
@@ -43,13 +60,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     cart.push({ ...item, quantity: 1 });
                 }
-                updateCart();
-                renderCart();
+                updateCart();//update cart in localStorage
+                renderCart();//render updated cart
                 showNotification('Item added to cart!');
             })
             .catch(error => console.error('Error adding item to cart:', error));
     }
 
+
+    
+//Removes item from cart
     function removeItemFromCart(itemId) {
         const cartItem = cart.find(item => item.id === itemId);
         if (cartItem) {
@@ -65,10 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
+    //updates cart in localStorage
     function updateCart() {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
 
+
+    //renders cart items and total price
     function renderCart() {
         const cartItemsContainer = document.querySelector('.cart-items');
         const cartTotal = document.getElementById('cart-total');
@@ -90,6 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 cartTotal.textContent = total.toFixed(2);
             }
 
+
+
+            //add event listeners to "remove" buttons
             document.querySelectorAll('.remove-from-cart').forEach(button => {
                 button.addEventListener('click', event => {
                     const itemId = event.target.getAttribute('data-id');
@@ -99,6 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
+
+    //shows notification
     function showNotification(message) {
         const notification = document.getElementById('notification');
         notification.textContent = message;
@@ -108,6 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000);
     }
 
+
+
+    //redierects to checkout page
     if (document.getElementById('checkout')) {
         document.getElementById('checkout').addEventListener('click', (e) => {
             e.preventDefault();
@@ -115,9 +148,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    //renders the cart initially
     renderCart();
 
-    // Login functionality
+
+
+    
+    // handles login form submission
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', function(event) {
@@ -129,19 +167,19 @@ document.addEventListener('DOMContentLoaded', () => {
             // Simple validation logic (replace with actual authentication logic)
             if (username === 'user' && password === 'password') {
                 localStorage.setItem('isLoggedIn', true);
-                window.location.href = 'profile.html';
+                window.location.href = 'profile.html'; //goes to profile page
             } else {
                 document.getElementById('login-error').style.display = 'block';
             }
         });
     }
 
-    // Check if user is logged in and redirect if necessary
+    // send back to profile page if already logged in
     if (localStorage.getItem('isLoggedIn') && window.location.pathname.endsWith('login.html')) {
         window.location.href = 'profile.html';
     }
 
-    // Logout functionality
+    // logout button process
     const logoutButton = document.getElementById('logout-button');
     if (logoutButton) {
         logoutButton.addEventListener('click', function() {
