@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         buttons.forEach(button => {
             button.addEventListener('click', () => {
-                // Handle adding to cart
                 console.log(`Item ${button.dataset.id} added to cart`);
                 addItemToCart(button.dataset.id);
             });
@@ -116,11 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 cartTotal.textContent = total.toFixed(2);
             }
 
-            // Add event listeners to remove buttons
             document.querySelectorAll('.remove-from-cart').forEach(button => {
                 button.addEventListener('click', event => {
                     const itemId = event.target.getAttribute('data-id');
-                    console.log('Remove from Cart button clicked', itemId); // Debug log
+                    console.log('Remove from Cart button clicked', itemId);
                     removeItemFromCart(itemId);
                 });
             });
@@ -129,14 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showNotification(message) {
         const notification = document.getElementById('notification');
-        console.log('Showing notification:', message); // Debug log
+        console.log('Showing notification:', message);
         if (notification) {
             notification.textContent = message;
             notification.classList.add('show');
             setTimeout(() => {
                 notification.classList.remove('show');
-                console.log('Hiding notification'); // Debug log
-            }, 2000); // Display notification for 2 seconds
+                console.log('Hiding notification');
+            }, 2000);
         }
     }
 
@@ -184,10 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const beamEffect = document.getElementById('beamEffect');
             beamEffect.classList.add('active');
 
-            // Remove the class after the animation completes
             setTimeout(() => {
                 beamEffect.classList.remove('active');
-            }, 2000); // Match this duration with the transition time in CSS
+            }, 2000);
         });
     }
 });
+
