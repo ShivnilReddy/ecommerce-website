@@ -254,7 +254,7 @@ footer {
 /* Store Page */
 .store-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust to auto-fill and set min width */
+    
     gap: 20px;
     padding: 20px;
 }
