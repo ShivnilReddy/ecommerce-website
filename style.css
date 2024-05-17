@@ -254,7 +254,7 @@ footer {
 /* Store Page */
 .store-container {
     display: grid;
-    
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));   
     gap: 50px;
     padding: 50px;
 }
@@ -271,11 +271,7 @@ footer {
     justify-content: space-between;
 }
 
-.item {
-    flex: 1;
-    margin: 10px;
-    text-align: center;
-}
+
 
 .item img {
     max-width: 75%;
