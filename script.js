@@ -187,4 +187,19 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'login.html';
         });
     }
+        
+    
+    // Handle checkout form submission
+    const checkoutForm = document.getElementById('checkout-form');
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            
+
+            
+            // Redirect to order confirmation page
+            window.location.href = 'order-confirmation.html';
+        });
+    }
 });
