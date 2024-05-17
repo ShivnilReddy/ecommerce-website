@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-}); // Ensure this closing brace matches the opening brace at the start of the function
+); 
 
 
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
