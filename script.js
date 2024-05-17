@@ -1,13 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const storeItemsContainer = document.getElementById('store-items');
+    if (!storeItemsContainer) {
+        console.error('Store items container not found');
+        return;
+    } else {
+        console.log('Store items container found');
+    }
+
     // Fetch items and populate the store
     fetch('data/items.json')
         .then(response => {
-            console.log('Fetch response:', response); // Debugging statement
+            console.log('Fetch response status:', response.status); // Debugging statement
+            if (!response.ok) {
+                throw new Error(`Fetch error: ${response.statusText}`);
+            }
             return response.json();
         })
         .then(data => {
             console.log('Fetched data:', data); // Debugging statement
-            const storeItemsContainer = document.getElementById('store-items');
+            if (!data.items || data.items.length === 0) {
+                console.warn('No items found in fetched data');
+                return;
+            }
             data.items.forEach(item => {
                 console.log('Processing item:', item); // Debugging statement
                 const itemDiv = document.createElement('div');
@@ -20,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
                 `;
                 storeItemsContainer.appendChild(itemDiv);
+                console.log('Item appended:', itemDiv); // Debugging statement
             });
             addEventListenersToButtons();
         })
@@ -27,6 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addEventListenersToButtons() {
         const buttons = document.querySelectorAll('.add-to-cart');
+        if (buttons.length === 0) {
+            console.warn('No add-to-cart buttons found');
+        }
         buttons.forEach(button => {
             button.addEventListener('click', () => {
                 // Handle adding to cart
@@ -34,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-});
+}); // Ensure this closing brace matches the opening brace at the start of the function
+
 
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
