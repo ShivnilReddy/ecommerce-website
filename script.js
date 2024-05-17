@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 addItemToCart(button.dataset.id);
             });
         });
-    }
+    
 
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
