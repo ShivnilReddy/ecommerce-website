@@ -342,7 +342,7 @@ footer {
 
 .profile-links {
     list-style: none;
-    padding: 0;
+    padding: 50px;
 }
 
 .profile-links li {
@@ -379,7 +379,7 @@ footer {
 
 .logout-button:hover {
     background-color: #512E5F; /* Darker shade of purple */
-}
+    color: #fff;}
 
 /* Login Page */
 .login-container {
