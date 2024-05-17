@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">	
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Store</title>
+    <title>Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,18 +11,22 @@
         <img src="resources/Logo.png" alt="Logo" class="logo">
         <ul id="menu">
             <li><a href="index.html" class="menu-item">HOME</a></li>
-            <li><a href="#" class="menu-item">LIGHT THE BEAM</a></li>
             <li><a href="store.html" class="menu-item">TEAM STORE</a></li>
-            <li><a href="login.html" class="menu-item">PROFILE</a></li>
-            <li><a href="cart.html" class="menu-item">CART</a></li>
+            <li><a href="login.html" class="menu-item">LOGIN</a></li>
         </ul>
     </nav>
-    <div class="store-container">
-        <h1>Team Store</h1>
-        <div class="store-items" id="store-items"></div>
-            
+    <div id="store-items">
+        <!-- Items will be dynamically populated here -->
     </div>
-	<div id="notification" class="notification">Item added to cart!</div>
+    <div class="cart-container">
+        <h1>Shopping Cart</h1>
+        <div class="cart-items"></div>
+        <div class="cart-summary">
+            <h3>Total: $<span id="cart-total">0</span></h3>
+            <button id="checkout">Checkout</button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
+
