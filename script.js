@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', () =&gt; {
+document.addEventListener('DOMContentLoaded', () =>; {
     // Fetch items and populate the store
     fetch('data/items.json')
-        .then(response =&gt; response.json())
-        .then(data =&gt; {
+        .then(response =>; response.json())
+        .then(data =>; {
             const storeItemsContainer = document.getElementById('store-items');
-            data.items.forEach(item =&gt; {
+            data.items.forEach(item =>; {
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
                 itemDiv.innerHTML = `
@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
             });
             addEventListenersToButtons();
         })
-        .catch(error =&gt; console.error('Error fetching items:', error));
+        .catch(error =>; console.error('Error fetching items:', error));
 
     function addEventListenersToButtons() {
-        document.querySelectorAll('.add-to-cart').forEach(button =&gt; {
-            button.addEventListener('click', event =&gt; {
+        document.querySelectorAll('.add-to-cart').forEach(button =>; {
+            button.addEventListener('click', event =>; {
                 const itemId = event.target.getAttribute('data-id');
                 console.log('Add to Cart button clicked', itemId); // Debug log
                 addItemToCart(itemId);
@@ -145,6 +145,32 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
         window.location.href = 'profile.html';
     }
 
+
+    if (loginLink) {
+        loginLink.addEventListener('click', function(event) {
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                event.preventDefault();
+                localStorage.removeItem('isLoggedIn');
+                updateLoginLink(false);
+                window.location.href = 'index.html';
+            }
+        });
+    }
+
+    function updateLoginLink(isLoggedIn) {
+        if (isLoggedIn) {
+            loginLink.textContent = 'LOGOUT';
+            loginLink.href = '#';
+        } else {
+            loginLink.textContent = 'LOGIN';
+            loginLink.href = 'login.html';
+        }
+    }
+
+
+
+
+    
     // Add event listener to LIGHT THE BEAM link
     const lightBeamLink = document.getElementById('lightBeamLink');
     if (lightBeamLink) {
