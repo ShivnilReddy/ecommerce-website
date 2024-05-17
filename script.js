@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', () =>; {
+document.addEventListener('DOMContentLoaded', () =&gt; {
     // Fetch items and populate the store
     fetch('data/items.json')
-        .then(response =>; response.json())
-        .then(data =>; {
+        .then(response =&gt; response.json())
+        .then(data =&gt; {
             const storeItemsContainer = document.getElementById('store-items');
-            data.items.forEach(item =>; {
+            data.items.forEach(item =&gt; {
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
                 itemDiv.innerHTML = `
@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', () =>; {
             });
             addEventListenersToButtons();
         })
-        .catch(error =>; console.error('Error fetching items:', error));
+        .catch(error =&gt; console.error('Error fetching items:', error));
 
     function addEventListenersToButtons() {
         document.querySelectorAll('.add-to-cart').forEach(button =>; {
-            button.addEventListener('click', event =>; {
+            button.addEventListener('click', event =&gt; {
                 const itemId = event.target.getAttribute('data-id');
                 console.log('Add to Cart button clicked', itemId); // Debug log
                 addItemToCart(itemId);
