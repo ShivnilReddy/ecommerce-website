@@ -325,7 +325,19 @@ footer {
 
 /* Profile Page */
 .profile-container {
+    max-width: 600px;
+    margin: 50px auto;
     padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+}
+
+.profile-container h1 {
+    text-align: center;
+    color: #4A235A; /* Dark purple */
+    margin-bottom: 20px;
 }
 
 .profile-container form {
@@ -333,13 +345,18 @@ footer {
     flex-direction: column;
 }
 
-.profile-container form label,
-.profile-container form input,
-.profile-container form button {
-    margin: 10px 0;
+.profile-container form label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #333;
+}
+.profile-container form input
+ {
+    margin-bottom: 15px;
+    font-size: 16px;
 }
 
-.profile-container form input,
+
 .profile-container form button {
     padding: 10px;
     border: 1px solid #ccc;
@@ -347,13 +364,15 @@ footer {
 }
 
 .profile-container form button {
-    background-color: #8E44AD;
+    background-color: #633974; 
     color: white;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .profile-container form button:hover {
-    background-color: #9B59B6;
+    background-color: #512E5F; 
 }
 
 /* Login Page */
