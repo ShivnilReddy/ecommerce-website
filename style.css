@@ -253,14 +253,13 @@ footer {
 
 /* Store Page */
 .store-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust to auto-fill and set min width */
     gap: 20px;
     padding: 20px;
 }
 
-.item {
-    flex: 1 1 calc(33.333% - 40px); /* 3 items per row with spacing */
+.store-items {
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -268,8 +267,14 @@ footer {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;  /* This is fine for internal layout */
     justify-content: space-between;
+}
+
+.item {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
 }
 
 .item img {
