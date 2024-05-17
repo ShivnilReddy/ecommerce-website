@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () =>
         cart.length = 0; // Empty the cart array
         updateCart(); // Update localStorage
         renderCart(); // Render the empty cart
+        console.log('Cart has been cleared'); // Debugging statement    
     }
 
     
