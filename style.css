@@ -261,7 +261,7 @@ footer {
 }
 
 /* General styles for all items */
-.items {
+.item {
   margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -274,7 +274,7 @@ footer {
   background-color: #fff;
 }
 
-.items img {
+.item img {
   max-width: 100%;
   height: auto; 
   object-fit: contain; /* Ensure images fit within the container */
