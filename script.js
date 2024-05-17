@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 const item = data.items.find(item => item.id === itemId);
+                console.log('Item found for adding:', item); // Debugging statement
                 const cartItem = cart.find(item => item.id === itemId);
                 if (cartItem) {
                     cartItem.quantity++;
@@ -91,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCart() {
         localStorage.setItem('cart', JSON.stringify(cart));
+        console.log('Cart updated in localStorage:', cart); // Debugging statement
     }
 
     function renderCart() {
@@ -170,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Check if user is logged in and redirect if necessary
-    if (localStorage.getItem('isLoggedIn') && window.location.pathname === '/login.html') {
+    if (localStorage.getItem('isLoggedIn') && window.location.pathname.endsWith('login.html')) {
         window.location.href = 'profile.html';
     }
 
@@ -189,4 +191,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
