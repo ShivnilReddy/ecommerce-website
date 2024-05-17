@@ -1,12 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Fetch items and populate the store
     fetch('data/items.json')
-        .then(response => response.json())
+        .then(response => {
+            console.log('Fetch response:', response); // Debugging statement
+            return response.json();
+        })
         .then(data => {
+            console.log('Fetched data:', data); // Debugging statement
             const storeItemsContainer = document.getElementById('store-items');
             data.items.forEach(item => {
+                console.log('Processing item:', item); // Debugging statement
                 const itemDiv = document.createElement('div');
-                itemDiv.classList.add('item');  // Ensure the class name matches CSS
+                itemDiv.classList.add('item');
                 itemDiv.innerHTML = `
                     <img src="resources/${item.image}" alt="${item.name}">
                     <h3>${item.name}</h3>
@@ -18,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             addEventListenersToButtons();
         })
-        .catch(error => console.error('Error fetching items:', error));
+        .catch(error => console.error('Error fetching items:', error)); // Debugging statement
 
     function addEventListenersToButtons() {
         const buttons = document.querySelectorAll('.add-to-cart');
@@ -30,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     function addItemToCart(itemId) {
