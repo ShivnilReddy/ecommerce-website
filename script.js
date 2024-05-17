@@ -1,24 +1,19 @@
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Fetch items and populate the store
-    fetch('data/items.json')
-        .then(response => response.json())
-        .then(data => {
-            const storeItemsContainer = document.getElementById('store-items');
-            data.items.forEach(item => {
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('item');
-                itemDiv.innerHTML = `
-                    <img src="resources/${item.image}" alt="${item.name}">
-                    <h3>${item.name}</h3>
-                    <p>${item.description}</p>
-                    <p>$${item.price}</p>
-                    <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
-                `;
-                storeItemsContainer.appendChild(itemDiv);
-            });
-            addEventListenersToButtons();
-        })
-        .catch(error => console.error('Error fetching items:', error));
+  // Load products
+  fetch('data/items.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      displayProducts(data);
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+    });
 
   // Load cart from localStorage
   loadCart();
@@ -109,8 +104,5 @@ function loadCart() {
 
 // Function to display cart
 function displayCart() {
-  const cartContainer = document.getElementById('cartItems');
-  if (cartContainer) {
-    loadCart();
-  }
+  window.location.href = 'cart.html';
 }
