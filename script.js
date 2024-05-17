@@ -1,28 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () =&gt; {
     // Fetch items and populate the store
     fetch('data/items.json')
-        .then(response => response.json())
-        .then(data => {
+        .then(response =&gt; response.json())
+        .then(data =&gt; {
             const storeItemsContainer = document.getElementById('store-items');
-            data.items.forEach(item => {
+            data.items.forEach(item =&gt; {
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
                 itemDiv.innerHTML = `
-                    <img src="resources/${item.image}" alt="${item.name}">
-                    <h3>${item.name}</h3>
-                    <p>${item.description}</p>
-                    <p>$${item.price}</p>
-                    <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
+                    &lt;img src="resources/${item.image}" alt="${item.name}"&gt;
+                    &lt;h3&gt;${item.name}&lt;/h3&gt;
+                    &lt;p&gt;${item.description}&lt;/p&gt;
+                    &lt;p&gt;$${item.price}&lt;/p&gt;
+                    &lt;button class="add-to-cart" data-id="${item.id}"&gt;Add to Cart&lt;/button&gt;
                 `;
                 storeItemsContainer.appendChild(itemDiv);
             });
             addEventListenersToButtons();
         })
-        .catch(error => console.error('Error fetching items:', error));
+        .catch(error =&gt; console.error('Error fetching items:', error));
 
     function addEventListenersToButtons() {
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', event => {
+        document.querySelectorAll('.add-to-cart').forEach(button =&gt; {
+            button.addEventListener('click', event =&gt; {
                 const itemId = event.target.getAttribute('data-id');
                 console.log('Add to Cart button clicked', itemId); // Debug log
                 addItemToCart(itemId);
@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addItemToCart(itemId) {
         fetch('data/items.json')
-            .then(response => response.json())
-            .then(data => {
-                const item = data.items.find(item => item.id === itemId);
-                const cartItem = cart.find(item => item.id === itemId);
+            .then(response =&gt; response.json())
+            .then(data =&gt; {
+                const item = data.items.find(item =&gt; item.id === itemId);
+                const cartItem = cart.find(item =&gt; item.id === itemId);
                 if (cartItem) {
                     cartItem.quantity++;
                 } else {
@@ -47,16 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderCart();
                 showNotification('Item added to cart!');
             })
-            .catch(error => console.error('Error adding item to cart:', error));
+            .catch(error =&gt; console.error('Error adding item to cart:', error));
     }
 
-     function removeItemFromCart(itemId) {
-        const cartItem = cart.find(item => item.id === itemId);
+    function removeItemFromCart(itemId) {
+        const cartItem = cart.find(item =&gt; item.id === itemId);
         if (cartItem) {
-            if (cartItem.quantity > 1) {
+            if (cartItem.quantity &gt; 1) {
                 cartItem.quantity--;
             } else {
-                const cartItemIndex = cart.findIndex(item => item.id === itemId);
+                const cartItemIndex = cart.findIndex(item =&gt; item.id === itemId);
                 cart.splice(cartItemIndex, 1);
             }
             updateCart();
@@ -75,13 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cartItemsContainer) {
             cartItemsContainer.innerHTML = '';
             let total = 0;
-            cart.forEach(item => {
+            cart.forEach(item =&gt; {
                 const cartItemDiv = document.createElement('div');
                 cartItemDiv.classList.add('cart-item');
                 cartItemDiv.innerHTML = `
-                    <img src="resources/${item.image}" alt="${item.name}" class="cart-item-image">
+                    &lt;img src="resources/${item.image}" alt="${item.name}" class="cart-item-image"&gt;
                     ${item.name} - $${item.price} x ${item.quantity}
-                    <button class="remove-from-cart" data-id="${item.id}">Remove</button>
+                    &lt;button class="remove-from-cart" data-id="${item.id}"&gt;Remove&lt;/button&gt;
                 `;
                 cartItemsContainer.appendChild(cartItemDiv);
                 total += item.price * item.quantity;
@@ -91,8 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Add event listeners to remove buttons
-            document.querySelectorAll('.remove-from-cart').forEach(button => {
-                button.addEventListener('click', event => {
+            document.querySelectorAll('.remove-from-cart').forEach(button =&gt; {
+                button.addEventListener('click', event =&gt; {
                     const itemId = event.target.getAttribute('data-id');
                     console.log('Remove from Cart button clicked', itemId); // Debug log
                     removeItemFromCart(itemId);
@@ -106,32 +106,32 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Showing notification:', message); // Debug log
         notification.textContent = message;
         notification.classList.add('show');
-        setTimeout(() => {
+        setTimeout(() =&gt; {
             notification.classList.remove('show');
             console.log('Hiding notification'); // Debug log
         }, 2000); // Display notification for 2 seconds
     }
 
     if (document.getElementById('checkout')) {
-        document.getElementById('checkout').addEventListener('click', (e) => {
+        document.getElementById('checkout').addEventListener('click', (e) =&gt; {
             e.preventDefault();
             window.location.href = 'checkout.html';
         });
     }
 
     renderCart();
-    
+
     // Login function
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
-    
+
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-    
+
             // Simple validation logic (replace with actual authentication logic)
-            if (username === 'user' && password === 'password') {
+            if (username === 'user' &amp;&amp; password === 'password') {
                 localStorage.setItem('isLoggedIn', true);
                 window.location.href = 'profile.html';
             } else {
@@ -141,22 +141,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Check if user is logged in and redirect if necessary
-    if (localStorage.getItem('isLoggedIn') && window.location.pathname === '/login.html') {
+    if (localStorage.getItem('isLoggedIn') &amp;&amp; window.location.pathname === '/login.html') {
         window.location.href = 'profile.html';
     }
-     // Add event listener to LIGHT THE BEAM link
-   
-    document.getElementById('lightBeamLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        const beamEffect = document.getElementById('beamEffect');
-        beamEffect.classList.add('active');
 
-                // Remove the class after the animation completes
-                setTimeout(() => {
-                    beamEffect.classList.remove('active');
-                }, 2000); // Match this duration with the transition time in CSS
-            }
+    // Add event listener to LIGHT THE BEAM link
+    const lightBeamLink = document.getElementById('lightBeamLink');
+    if (lightBeamLink) {
+        lightBeamLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            const beamEffect = document.getElementById('beamEffect');
+            beamEffect.classList.add('active');
+
+            // Remove the class after the animation completes
+            setTimeout(() =&gt; {
+                beamEffect.classList.remove('active');
+            }, 2000); // Match this duration with the transition time in CSS
         });
-    } 
-   }
+    }
 });
