@@ -167,4 +167,5 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error('lightBeamLink element not found');
     }
+   }
 });
