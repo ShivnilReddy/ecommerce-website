@@ -145,8 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'profile.html';
     }
      // Add event listener to LIGHT THE BEAM link
-    document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM fully loaded and parsed');
+   document.addEventListener('DOMContentLoaded', () => {
     const lightBeamLink = document.getElementById('lightBeamLink');
     const beamEffect = document.getElementById('beamEffect');
 
@@ -165,5 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 2000); // Match this duration with the transition time in CSS
             }
         });
+    } else {
+        console.error('lightBeamLink element not found');
     }
 });
