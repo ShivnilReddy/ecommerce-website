@@ -376,7 +376,7 @@ footer {
     font-size: 16px;
     transition: background-color 0.3s;
     display: block; /* Make the button block-level */
-    margin: 20px auto 0; /* Center the button and add space above it */
+    margin: 100px auto 0; /* Center the button and add space above it */
     text-align: center;
 }
 
