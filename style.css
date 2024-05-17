@@ -253,7 +253,7 @@ footer {
 
 /* Store Page */
 
-.store-items {
+.store-container {
     column-count: 3;
     column-gap: 20px;
     padding: 20px;
