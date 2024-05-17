@@ -140,4 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('isLoggedIn') && window.location.pathname.endsWith('login.html')) {
         window.location.href = 'profile.html';
     }
+
+    // Logout functionality
+    const logoutButton = document.getElementById('logout-button');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'login.html';
+        });
+    }
 });
