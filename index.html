@@ -81,7 +81,47 @@
     </p>
     
     
-<script src="script.js"></script>    
+<script>
+
+var navbar = document.getElementById("navbar");
+				var menu = document.getElementById("menu");
+        
+        window.onscroll = function(){
+        		if(window.pageYOffset >= navbar.offsetHeight){
+            		navbar.classList.add("sticky");
+            }
+            else{
+            		navbar.classList.remove("sticky")
+            }
+        };
+
+	    document.getElementById('nextJersey').addEventListener('click', function() {
+            const jerseys = document.querySelectorAll('.jersey');
+            let currentIndex = findVisibleJersey(jerseys);
+            jerseys[currentIndex].style.display = 'none'; // Hide current jersey
+            const nextIndex = (currentIndex + 1) % jerseys.length; // Calculate next index, cycle back to 0 if at the end
+            jerseys[nextIndex].style.display = 'block'; // Show next jersey
+        });
+
+        document.getElementById('prevJersey').addEventListener('click', function() {
+            const jerseys = document.querySelectorAll('.jersey');
+            let currentIndex = findVisibleJersey(jerseys);
+            jerseys[currentIndex].style.display = 'none'; // Hide current jersey
+            const prevIndex = (currentIndex - 1 + jerseys.length) % jerseys.length; // Calculate previous index, cycle to the end if at the beginning
+            jerseys[prevIndex].style.display = 'block'; // Show previous jersey
+        });
+
+        function findVisibleJersey(jerseys) {
+            for (let i = 0; i < jerseys.length; i++) {
+                if (jerseys[i].style.display === 'block' || getComputedStyle(jerseys[i]).display === 'block') {
+                    return i;
+                }
+            }
+            return 0; // Default to first jersey if none are visible (shouldn't happen in this setup)
+        }        
+
+	
+</script>    
     
      <div class="subscription-form">
         <form>
