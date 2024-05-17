@@ -254,9 +254,9 @@ footer {
 /* Store Page */
 .store-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));   
-    gap: 100px;
-    padding: 100px;
+    grid-template-columns:repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
 }
 
 .store-items {
