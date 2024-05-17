@@ -465,7 +465,7 @@ button {
     display: block;
 }
 /* Beam Effect Styles */
-#beamEffect {
+.beamEffect {
     position: fixed;
     top: 0;
     left: 50%;
@@ -477,7 +477,7 @@ button {
     z-index: 9999;
 }
 
-#beamEffect.active {
+.beamEffect.active {
     height: 100vh;
     box-shadow: 0 0 20px purple;
 }
