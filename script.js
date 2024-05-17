@@ -235,10 +235,8 @@ document.addEventListener('DOMContentLoaded', () =>
     
     // Handle checkout form submission
     const checkoutForm = document.getElementById('checkout-form');
-    if (checkoutForm) 
-    {
-        checkoutForm.addEventListener('submit', function(event) 
-        {
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
             // Clear the cart before redirection
