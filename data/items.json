@@ -5,49 +5,49 @@
             "name": "Rochester",
             "description": "1948-1949 Home & Away",
             "price": 49.99,
-            "image": "resources/Jersey1.png"
+            "image": "Jersey1.png"
         },
         {
             "id": "2",
             "name": "Cincinnati",
             "description": "1957-1960 Home & Away",
             "price": 59.99,
-            "image": "resources/Jersey2.png"
+            "image": "Jersey2.png"
         },
         {
             "id": "3",
             "name": "Royals",
             "description": "1968-1971 Home & Away",
             "price": 69.99,
-            "image": "resourcees/Jersey3.png"
+            "image": "Jersey3.png"
         },
         {
             "id": "4",
             "name": "Powder Blue",
             "description": "1985-1986 Home & Away",
             "price": 79.99,
-            "image": "resources/Jersey4.png"
+            "image": "Jersey4.png"
         },
         {
             "id": "5",
             "name": "OG Kings",
             "description": "1994-2002 Home & Away",
             "price": 89.99,
-            "image": "resources/Jersey5.png"
+            "image": "Jersey5.png"
         },
         {
             "id": "6",
             "name": "Sacramento",
             "description": "2008-2014 Home & Away",
             "price": 99.99,
-            "image": "resources/Jersey6.png"
+            "image": "Jersey6.png"
         },
         {
             "id": "7",
             "name": "Current",
             "description": "2023-2024 Home & Away",
             "price": 109.99,
-            "image": "resources/Jersey7.png"
+            "image": "Jersey7.png"
         }
     ]
 }
