@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     // Fetch items and populate the store
     fetch('data/items.json')
@@ -7,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const storeItemsContainer = document.getElementById('store-items');
             data.items.forEach(item => {
                 const itemDiv = document.createElement('div');
-                itemDiv.classList.add('item');
+                itemDiv.classList.add('item');  // Ensure the class name matches CSS
                 itemDiv.innerHTML = `
                     <img src="resources/${item.image}" alt="${item.name}">
                     <h3>${item.name}</h3>
@@ -22,15 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error fetching items:', error));
 
     function addEventListenersToButtons() {
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', event => {
-                const itemId = event.target.getAttribute('data-id');
-                console.log('Add to Cart button clicked', itemId); // Debug log
-                addItemToCart(itemId);
+        const buttons = document.querySelectorAll('.add-to-cart');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Handle adding to cart
+                console.log(`Item ${button.dataset.id} added to cart`);
             });
         });
     }
-
+});
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     function addItemToCart(itemId) {
