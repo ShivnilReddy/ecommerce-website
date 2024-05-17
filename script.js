@@ -145,14 +145,25 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'profile.html';
     }
      // Add event listener to LIGHT THE BEAM link
-    document.getElementById('lightBeamLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        const beamEffect = document.getElementById('beamEffect');
-        beamEffect.classList.add('active');
+    document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM fully loaded and parsed');
+    const lightBeamLink = document.getElementById('lightBeamLink');
+    const beamEffect = document.getElementById('beamEffect');
 
-        // Remove the class after the animation completes
-        setTimeout(() => {
-            beamEffect.classList.remove('active');
-        }, 2000); // Match this duration with the transition time in CSS
-    });
+    if (lightBeamLink) {
+        lightBeamLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            console.log('LIGHT THE BEAM link clicked');
+            if (beamEffect) {
+                beamEffect.classList.add('active');
+                console.log('Beam effect activated');
+
+                // Remove the class after the animation completes
+                setTimeout(() => {
+                    beamEffect.classList.remove('active');
+                    console.log('Beam effect deactivated');
+                }, 2000); // Match this duration with the transition time in CSS
+            }
+        });
+    }
 });
