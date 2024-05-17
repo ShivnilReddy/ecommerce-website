@@ -106,7 +106,8 @@ document.addEventListener('DOMContentLoaded', () =>
     function updateCart() 
     {
         localStorage.setItem('cart', JSON.stringify(cart));
-        console.log('Cart updated in localStorage:', cart); // Debugging statement    }
+        console.log('Cart updated in localStorage:', cart); // Debugging statement    
+    }
 
 
     //renders cart items and total price
@@ -247,4 +248,4 @@ document.addEventListener('DOMContentLoaded', () =>
             window.location.href = 'order-confirmation.html';
         });
     }
-});
+};
