@@ -260,7 +260,7 @@ footer {
 }
 
 .store-items {
-    width: calc(33.333% - 20px); /* Adjust width for consistent sizing */
+   
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
