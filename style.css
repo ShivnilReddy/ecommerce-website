@@ -242,9 +242,18 @@ footer {
     display: inline-block;
 }
 
+
+
+
+
+
+
+
+
+
 /* Store Page */
 .store-container {
-    display: grid;
+    display: inline-grid;
     grid-template-columns:repeat(2, 1fr);
     gap: 20px;
     padding: 20px;
