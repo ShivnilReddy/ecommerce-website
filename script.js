@@ -1,13 +1,16 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => 
+    {
     // Fetch items and populate the store from items.json    
     fetch('data/items.json')//fetches JSON file
         .then(response => response.json())//once received, converts to json
         //after conversion , data is processed
-        .then(data => {
+        .then(data => 
+        {
             //finds container where items will be displayed
             const storeItemsContainer = document.getElementById('store-items');
             //iterates for each item
-            data.items.forEach(item => {
+            data.items.forEach(item => 
+            {
                 //creates new div element for new item
                 const itemDiv = document.createElement('div');
                 //add class 'item' to div
@@ -32,9 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
   
     
     
-    function addEventListenersToButtons() {
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', event => {
+    function addEventListenersToButtons() 
+    {
+        document.querySelectorAll('.add-to-cart').forEach(button => 
+        {
+            button.addEventListener('click', event => 
+            {
                 const itemId = event.target.getAttribute('data-id');
                 addItemToCart(itemId);
             });
@@ -49,15 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
     
     
     //add items to cart
-    function addItemToCart(itemId) {
+    function addItemToCart(itemId) 
+    {
         fetch('data/items.json')
             .then(response => response.json())
-            .then(data => {
+            .then(data => 
+            {
                 const item = data.items.find(item => item.id === itemId);
                 const cartItem = cart.find(item => item.id === itemId);
-                if (cartItem) {
+                if (cartItem) 
+                {
                     cartItem.quantity++;
-                } else {
+                } 
+                else 
+                {
                     cart.push({ ...item, quantity: 1 });
                 }
                 updateCart();//update cart in localStorage
@@ -70,12 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 //Removes item from cart
-    function removeItemFromCart(itemId) {
+    function removeItemFromCart(itemId) 
+    {
         const cartItem = cart.find(item => item.id === itemId);
-        if (cartItem) {
-            if (cartItem.quantity > 1) {
+        if (cartItem) 
+        {
+            if (cartItem.quantity > 1) 
+            {
                 cartItem.quantity--;
-            } else {
+            } 
+            else 
+            {
                 const cartItemIndex = cart.findIndex(item => item.id === itemId);
                 cart.splice(cartItemIndex, 1);
             }
@@ -87,19 +103,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     //updates cart in localStorage
-    function updateCart() {
+    function updateCart() 
+    {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
 
 
     //renders cart items and total price
-    function renderCart() {
+    function renderCart() 
+    {
         const cartItemsContainer = document.querySelector('.cart-items');
         const cartTotal = document.getElementById('cart-total');
-        if (cartItemsContainer) {
+        if (cartItemsContainer) 
+        {
             cartItemsContainer.innerHTML = '';
             let total = 0;
-            cart.forEach(item => {
+            cart.forEach(item => 
+            {
                 const cartItemDiv = document.createElement('div');
                 cartItemDiv.classList.add('cart-item');
                 cartItemDiv.innerHTML = `
@@ -110,15 +130,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 cartItemsContainer.appendChild(cartItemDiv);
                 total += item.price * item.quantity;
             });
-            if (cartTotal) {
+            if (cartTotal) 
+            {
                 cartTotal.textContent = total.toFixed(2);
             }
 
 
 
             //add event listeners to "remove" buttons
-            document.querySelectorAll('.remove-from-cart').forEach(button => {
-                button.addEventListener('click', event => {
+            document.querySelectorAll('.remove-from-cart').forEach(button => 
+            {
+                button.addEventListener('click', event => 
+                {
                     const itemId = event.target.getAttribute('data-id');
                     removeItemFromCart(itemId);
                 });
@@ -129,20 +152,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     //shows notification
-    function showNotification(message) {
+    function showNotification(message) 
+    {
         const notification = document.getElementById('notification');
         notification.textContent = message;
         notification.classList.add('show');
-        setTimeout(() => {
+        setTimeout(() => 
+            {
             notification.classList.remove('show');
-        }, 2000);
+            }, 2000);
     }
 
+    // Clear the cart
+    function clearCart() 
+    {
+        cart.length = 0; // Empty the cart array
+        updateCart(); // Update localStorage
+        renderCart(); // Render the empty cart
+    }
 
-
+    
     //redierects to checkout page
-    if (document.getElementById('checkout')) {
-        document.getElementById('checkout').addEventListener('click', (e) => {
+    if (document.getElementById('checkout')) 
+    {
+        document.getElementById('checkout').addEventListener('click', (e) => 
+        {
             e.preventDefault();
             window.location.href = 'checkout.html';
         });
@@ -157,32 +191,40 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // handles login form submission
     const loginForm = document.getElementById('login-form');
-    if (loginForm) {
-        loginForm.addEventListener('submit', function(event) {
+    if (loginForm) 
+    {
+        loginForm.addEventListener('submit', function(event) 
+        {
             event.preventDefault();
 
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
             // Simple validation logic (replace with actual authentication logic)
-            if (username === 'user' && password === 'password') {
+            if (username === 'user' && password === 'password') 
+            {
                 localStorage.setItem('isLoggedIn', true);
                 window.location.href = 'profile.html'; //goes to profile page
-            } else {
+            } 
+            else 
+            {
                 document.getElementById('login-error').style.display = 'block';
             }
         });
     }
 
     // send back to profile page if already logged in
-    if (localStorage.getItem('isLoggedIn') && window.location.pathname.endsWith('login.html')) {
+    if (localStorage.getItem('isLoggedIn') && window.location.pathname.endsWith('login.html')) 
+    {
         window.location.href = 'profile.html';
     }
 
     // logout button process
     const logoutButton = document.getElementById('logout-button');
-    if (logoutButton) {
-        logoutButton.addEventListener('click', function() {
+    if (logoutButton) 
+    {
+        logoutButton.addEventListener('click', function() 
+       {
             localStorage.removeItem('isLoggedIn');
             window.location.href = 'login.html';
         });
@@ -191,12 +233,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Handle checkout form submission
     const checkoutForm = document.getElementById('checkout-form');
-    if (checkoutForm) {
-        checkoutForm.addEventListener('submit', function(event) {
+    if (checkoutForm) 
+    {
+        checkoutForm.addEventListener('submit', function(event) 
+        {
             event.preventDefault();
 
-            
-
+            // Clear the cart before redirection
+            clearCart();
             
             // Redirect to order confirmation page
             window.location.href = 'order-confirmation.html';
