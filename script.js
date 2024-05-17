@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () =>
 
              //light the beam!
 
-        document.addEventListener('DOMContentLoaded', () => {
+        
             const lightBeamLink = document.getElementById('lightBeamLink');
             const beamEffect = document.getElementById('beamEffect');
 
@@ -272,8 +272,8 @@ document.addEventListener('DOMContentLoaded', () =>
                 });
             } else {
                 console.error('lightBeamLink element not found');
-            }
-        });
+            };
+        
 
         
     });
