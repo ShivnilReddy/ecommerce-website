@@ -1,24 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Existing cart functionality
+    // Fetch items and populate the store
     fetch('data/items.json')
         .then(response => response.json())
         .then(data => {
             const storeItemsContainer = document.getElementById('store-items');
-            if (storeItemsContainer) {
-                data.items.forEach(item => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.classList.add('item');
-                    itemDiv.innerHTML = `
-                        <img src="resources/${item.image}" alt="${item.name}">
-                        <h3>${item.name}</h3>
-                        <p>${item.description}</p>
-                        <p>$${item.price}</p>
-                        <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
-                    `;
-                    storeItemsContainer.appendChild(itemDiv);
-                });
-                addEventListenersToButtons();
-            }
+            data.items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+                itemDiv.innerHTML = `
+                    <img src="resources/${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                    <p>$${item.price}</p>
+                    <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
+                `;
+                storeItemsContainer.appendChild(itemDiv);
+            });
+            addEventListenersToButtons();
         })
         .catch(error => console.error('Error fetching items:', error));
 
@@ -102,13 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showNotification(message) {
         const notification = document.getElementById('notification');
-        if (notification) {
-            notification.textContent = message;
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 2000);
-        }
+        notification.textContent = message;
+        notification.classList.add('show');
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 2000);
     }
 
     if (document.getElementById('checkout')) {
@@ -134,10 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('isLoggedIn', true);
                 window.location.href = 'profile.html';
             } else {
-                const loginError = document.getElementById('login-error');
-                if (loginError) {
-                    loginError.style.display = 'block';
-                }
+                document.getElementById('login-error').style.display = 'block';
             }
         });
     }
@@ -147,5 +141,3 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'profile.html';
     }
 });
-
-
