@@ -252,33 +252,31 @@ footer {
 
 
 /* Store Page */
-.store-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
-  gap: 10px;
-  padding: 10px;
-  grid-auto-rows: minmax(100px, auto); /* Set minimum row height */
+
+.store-items {
+    column-count: 3;
+    column-gap: 20px;
+    padding: 20px;
 }
 
-/* General styles for all items */
 .item {
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #fff;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .item img {
-  max-width: 100%;
-  height: auto; 
-  object-fit: contain; /* Ensure images fit within the container */
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 }
+
 
 .add-to-cart {
     margin-top: 10px;
