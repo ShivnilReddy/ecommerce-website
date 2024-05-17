@@ -254,12 +254,13 @@ footer {
 /* Store Page */
 .store-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
   gap: 10px;
   padding: 10px;
-  grid-auto-rows: minmax(100px, auto); 
+  grid-auto-rows: minmax(100px, auto); /* Set minimum row height */
 }
 
+/* General styles for all items */
 .items {
   margin: 10px;
   padding: 10px;
@@ -270,13 +271,15 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #fff;
 }
-
 
 .items img {
   max-width: 100%;
-  height: 100px;
+  height: auto; 
+  object-fit: contain; /* Ensure images fit within the container */
 }
+
 .add-to-cart {
     margin-top: 10px;
     padding: 10px 20px;
