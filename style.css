@@ -436,9 +436,9 @@ button {
 /* Beam Effect Styles */
 #beamEffect {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 50%;
-    width: 10px;
+    width: 100px;
     height: 0;
     background-color: purple;
     transform: translateX(-50%);
