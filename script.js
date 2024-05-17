@@ -144,5 +144,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('isLoggedIn') && window.location.pathname === '/login.html') {
         window.location.href = 'profile.html';
     }
-    
+     // Add event listener to LIGHT THE BEAM link
+    document.getElementById('lightBeamLink').addEventListener('click', function(event) {
+        event.preventDefault();
+        const beamEffect = document.getElementById('beamEffect');
+        beamEffect.classList.add('active');
+
+        // Remove the class after the animation completes
+        setTimeout(() => {
+            beamEffect.classList.remove('active');
+        }, 2000); // Match this duration with the transition time in CSS
+    });
 });
