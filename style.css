@@ -255,8 +255,8 @@ footer {
 .store-container {
     display: grid;
     
-    gap: 20px;
-    padding: 20px;
+    gap: 50px;
+    padding: 50px;
 }
 
 .store-items {
@@ -278,7 +278,7 @@ footer {
 }
 
 .item img {
-    max-width: 100%;
+    max-width: 75%;
     height: auto;
 }
 
