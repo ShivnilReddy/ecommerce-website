@@ -340,39 +340,45 @@ footer {
     margin-bottom: 20px;
 }
 
-.profile-container form {
-    display: flex;
-    flex-direction: column;
+.profile-links {
+    list-style: none;
+    padding: 0;
 }
 
-.profile-container form label {
-    margin: 10px 0 5px;
+.profile-links li {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.profile-links a {
+    text-decoration: none;
+    color: #4A235A; /* Dark purple */
+    font-size: 18px;
     font-weight: bold;
-    color: #333;
-}
-.profile-container form input
- {
-    margin-bottom: 15px;
-    font-size: 16px;
+    border: 2px solid #4A235A;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-
-.profile-container form button {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.profile-links a:hover {
+    background-color: #4A235A;
+    color: #fff;
 }
 
-.profile-container form button {
-    background-color: #633974; 
+.logout-button {
+    background-color: #4A235A;
     color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-.profile-container form button:hover {
-    background-color: #512E5F; 
+.logout-button:hover {
+    background-color: #512E5F; /* Darker shade of purple */
 }
 
 /* Login Page */
