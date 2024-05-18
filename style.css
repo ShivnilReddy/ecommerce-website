@@ -440,7 +440,7 @@ button {
     left: 50%;
     width: 100px;
     height: 0;
-    background-color: purple;
+    background-color: #AD03DE;
     transform: translateX(-50%);
     transition: height 1s, box-shadow 1s;
     z-index: 9999;
@@ -448,5 +448,5 @@ button {
 
 #beamEffect.active {
     height: 100vh;
-    box-shadow: 0 0 20px purple;
+    box-shadow: 0 0 20px #AD03DE, 0 0 40px #AD03DE, 0 0 60px #AD03DE, 0 0 80px #AD03DE; /* Vibrant glow */
 }
