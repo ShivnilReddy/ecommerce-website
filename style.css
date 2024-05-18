@@ -595,7 +595,7 @@ button {
 .confirmation-container h1 {
     color: #4A235A; /* Dark purple */
     margin-bottom: 20px;
-    text-align: center;}
+    }
 
 .confirmation-container p {
     font-size: 18px;
@@ -603,19 +603,4 @@ button {
     margin-bottom: 20px;
 }
 
-.confirmation-container .btn {
-    background-color: #8E44AD; /* Purple background */
-    color: white; /* White text */
-    padding: 10px 20px; /* Padding inside the button */
-    border: none; /* Remove default border */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 16px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-decoration: none; /* Remove underline from link */
-    transition: background-color 0.3s; /* Smooth background color transition */
-}
 
-.confirmation-container .btn:hover {
-    background-color: #9B59B6; /* Darker shade of purple on hover */
-}
