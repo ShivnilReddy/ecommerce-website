@@ -298,9 +298,9 @@ footer {
 }
 
 .cart-container h1 {
-    color: #4A235A; 
-    margin-bottom: 20px; 
-    text-align: center; 
+    color: #4A235A; /* Dark purple for the header text */
+    margin-bottom: 20px; /* Space below the header */
+    text-align: center; /* Center the header text */
 }
 
 .cart-items {
@@ -323,29 +323,30 @@ footer {
 }
 
 .cart-item-image {
-    width: 100px ; 
-    height: 100px ; 
+    width: 100px ; /* Adjust width */
+    height: 100px ; /* Adjust height */
     margin-right: 10px;
     object-fit: cover;
 }
 
 .cart-summary button#checkout {
-    background-color: #8E44AD;
-    color: white; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 4px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    font-weight: bold; 
-    transition: background-color 0.3s; 
-    width: auto; 
-    max-width: 200px; 
-    align-self: center; 
+    background-color: #8E44AD;/* Purple background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding inside the button */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    width: auto; /* Auto width */
+    max-width: 200px; /* Maximum width */
+    align-self: center; /* Center the button within the summary */
 }
 
 .cart-summary button#checkout:hover {
-    background-color: #9B59B6; 
+    background-color: #9B59B6; /* Darker shade of purple on hover */
+}
 
 /* Profile Page */
 .profile-container {
@@ -360,7 +361,7 @@ footer {
 
 .profile-container h1 {
     text-align: center;
-    color: #4A235A; 
+    color: #4A235A; /* Dark purple */
     margin-bottom: 20px;
 }
 
@@ -376,7 +377,7 @@ footer {
 
 .profile-links a {
     text-decoration: none;
-    color: #4A235A; 
+    color: #4A235A; /* Dark purple */
     font-size: 18px;
     font-weight: bold;
     border: 2px solid #4A235A;
@@ -399,13 +400,13 @@ footer {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
-    display: block; 
-    margin: 100px auto 0; 
+    display: block; /* Make the button block-level */
+    margin: 100px auto 0; /* Center the button and add space above it */
     text-align: center;
 }
 
 .logout-button:hover {
-    background-color: #512E5F; 
+    background-color: #512E5F; /* Darker shade of purple */
     color: #fff;}
 
 /* Login Page */
@@ -510,7 +511,7 @@ button {
 
 
 
-
+//checkout.html
 
 /* Checkout Page */
 .checkout-container {
@@ -525,7 +526,7 @@ button {
 }
 
 .checkout-container h1 {
-    color: #4A235A; 
+    color: #4A235A; /* Dark purple */
     margin-bottom: 20px;
     text-align: center;
 }
