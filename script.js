@@ -1,28 +1,28 @@
-document.addEventListener('DOMContentLoaded', () =&gt; {
+document.addEventListener('DOMContentLoaded', () => {
     // Fetch items and populate the store
     fetch('data/items.json')
-        .then(response =&gt; response.json())
-        .then(data =&gt; {
+        .then(response => response.json())
+        .then(data => {
             const storeItemsContainer = document.getElementById('store-items');
-            data.items.forEach(item =&gt; {
+            data.items.forEach(item => {
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
                 itemDiv.innerHTML = `
-                    &lt;img src="resources/${item.image}" alt="${item.name}"&gt;
-                    &lt;h3&gt;${item.name}&lt;/h3&gt;
-                    &lt;p&gt;${item.description}&lt;/p&gt;
-                    &lt;p&gt;$${item.price}&lt;/p&gt;
-                    &lt;button class="add-to-cart" data-id="${item.id}"&gt;Add to Cart&lt;/button&gt;
+                    <img src="resources/${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                    <p>$${item.price}</p>
+                    <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
                 `;
                 storeItemsContainer.appendChild(itemDiv);
             });
             addEventListenersToButtons();
         })
-        .catch(error =&gt; console.error('Error fetching items:', error));
+        .catch(error => console.error('Error fetching items:', error));
 
     function addEventListenersToButtons() {
-        document.querySelectorAll('.add-to-cart').forEach(button =>; {
-            button.addEventListener('click', event =&gt; {
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', event => {
                 const itemId = event.target.getAttribute('data-id');
                 console.log('Add to Cart button clicked', itemId); // Debug log
                 addItemToCart(itemId);
@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
 
     function addItemToCart(itemId) {
         fetch('data/items.json')
-            .then(response =&gt; response.json())
-            .then(data =&gt; {
-                const item = data.items.find(item =&gt; item.id === itemId);
-                const cartItem = cart.find(item =&gt; item.id === itemId);
+            .then(response => response.json())
+            .then(data => {
+                const item = data.items.find(item => item.id === itemId);
+                const cartItem = cart.find(item => item.id === itemId);
                 if (cartItem) {
                     cartItem.quantity++;
                 } else {
@@ -47,16 +47,16 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
                 renderCart();
                 showNotification('Item added to cart!');
             })
-            .catch(error =&gt; console.error('Error adding item to cart:', error));
+            .catch(error => console.error('Error adding item to cart:', error));
     }
 
     function removeItemFromCart(itemId) {
-        const cartItem = cart.find(item =&gt; item.id === itemId);
+        const cartItem = cart.find(item => item.id === itemId);
         if (cartItem) {
-            if (cartItem.quantity &gt; 1) {
+            if (cartItem.quantity > 1) {
                 cartItem.quantity--;
             } else {
-                const cartItemIndex = cart.findIndex(item =&gt; item.id === itemId);
+                const cartItemIndex = cart.findIndex(item => item.id === itemId);
                 cart.splice(cartItemIndex, 1);
             }
             updateCart();
@@ -75,13 +75,13 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
         if (cartItemsContainer) {
             cartItemsContainer.innerHTML = '';
             let total = 0;
-            cart.forEach(item =&gt; {
+            cart.forEach(item => {
                 const cartItemDiv = document.createElement('div');
                 cartItemDiv.classList.add('cart-item');
                 cartItemDiv.innerHTML = `
-                    &lt;img src="resources/${item.image}" alt="${item.name}" class="cart-item-image"&gt;
+                    <img src="resources/${item.image}" alt="${item.name}" class="cart-item-image">
                     ${item.name} - $${item.price} x ${item.quantity}
-                    &lt;button class="remove-from-cart" data-id="${item.id}"&gt;Remove&lt;/button&gt;
+                    <button class="remove-from-cart" data-id="${item.id}">Remove</button>
                 `;
                 cartItemsContainer.appendChild(cartItemDiv);
                 total += item.price * item.quantity;
@@ -91,8 +91,8 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
             }
 
             // Add event listeners to remove buttons
-            document.querySelectorAll('.remove-from-cart').forEach(button =&gt; {
-                button.addEventListener('click', event =&gt; {
+            document.querySelectorAll('.remove-from-cart').forEach(button => {
+                button.addEventListener('click', event => {
                     const itemId = event.target.getAttribute('data-id');
                     console.log('Remove from Cart button clicked', itemId); // Debug log
                     removeItemFromCart(itemId);
@@ -106,14 +106,14 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
         console.log('Showing notification:', message); // Debug log
         notification.textContent = message;
         notification.classList.add('show');
-        setTimeout(() =&gt; {
+        setTimeout(() => {
             notification.classList.remove('show');
             console.log('Hiding notification'); // Debug log
         }, 2000); // Display notification for 2 seconds
     }
 
     if (document.getElementById('checkout')) {
-        document.getElementById('checkout').addEventListener('click', (e) =&gt; {
+        document.getElementById('checkout').addEventListener('click', (e) => {
             e.preventDefault();
             window.location.href = 'checkout.html';
         });
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
             const password = document.getElementById('password').value;
 
             // Simple validation logic (replace with actual authentication logic)
-            if (username === 'user' &amp;&amp; password === 'password') {
+            if (username === 'user' && password === 'password') {
                 localStorage.setItem('isLoggedIn', true);
                 window.location.href = 'profile.html';
             } else {
@@ -141,11 +141,11 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
     }
 
     // Check if user is logged in and redirect if necessary
-    if (localStorage.getItem('isLoggedIn') &amp;&amp; window.location.pathname === '/login.html') {
+    if (localStorage.getItem('isLoggedIn') && window.location.pathname === '/login.html') {
         window.location.href = 'profile.html';
     }
 
-
+    const loginLink = document.getElementById('login-link');
     if (loginLink) {
         loginLink.addEventListener('click', function(event) {
             if (localStorage.getItem('isLoggedIn') === 'true') {
@@ -158,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
     }
 
     function updateLoginLink(isLoggedIn) {
+        const loginLink = document.getElementById('login-link');
         if (isLoggedIn) {
             loginLink.textContent = 'LOGOUT';
             loginLink.href = '#';
@@ -167,10 +168,6 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
         }
     }
 
-
-
-
-    
     // Add event listener to LIGHT THE BEAM link
     const lightBeamLink = document.getElementById('lightBeamLink');
     const beamEffect = document.getElementById('beamEffect');
@@ -187,3 +184,4 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
         });
     }
 });
+
