@@ -168,6 +168,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
+    // Sample transaction data
+    const transactions = [
+        { date: '2024-05-01', description: 'Purchase at Team Store', amount: -59.99, balance: 940.01 },
+        { date: '2024-04-27', description: 'Deposit', amount: 1000.00, balance: 1000.00 },
+        { date: '2024-04-20', description: 'Purchase at Team Store', amount: -39.99, balance: 1000.00 },
+        { date: '2024-04-10', description: 'Refund from Team Store', amount: 39.99, balance: 1039.99 },
+        { date: '2024-04-01', description: 'Purchase at Team Store', amount: -50.00, balance: 1000.00 }
+    ];
+
+    const transactionHistory = document.getElementById('transaction-history');
+
+    transactions.forEach(transaction => {
+        const tr = document.createElement('tr');
+
+        const dateTd = document.createElement('td');
+        dateTd.textContent = transaction.date;
+        tr.appendChild(dateTd);
+
+        const descriptionTd = document.createElement('td');
+        descriptionTd.textContent = transaction.description;
+        tr.appendChild(descriptionTd);
+
+        const amountTd = document.createElement('td');
+        amountTd.textContent = `$${transaction.amount.toFixed(2)}`;
+        tr.appendChild(amountTd);
+
+        const balanceTd = document.createElement('td');
+        balanceTd.textContent = `$${transaction.balance.toFixed(2)}`;
+        tr.appendChild(balanceTd);
+
+        transactionHistory.appendChild(tr);
+    });
+
+
+
+
+    
     // Add event listener to LIGHT THE BEAM link
     const lightBeamLink = document.getElementById('lightBeamLink');
     const beamEffect = document.getElementById('beamEffect');
