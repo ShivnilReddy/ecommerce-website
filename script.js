@@ -173,14 +173,15 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
     
     // Add event listener to LIGHT THE BEAM link
     const lightBeamLink = document.getElementById('lightBeamLink');
-    if (lightBeamLink) {
+    const beamEffect = document.getElementById('beamEffect');
+
+    if (lightBeamLink && beamEffect) {
         lightBeamLink.addEventListener('click', function(event) {
             event.preventDefault();
-            const beamEffect = document.getElementById('beamEffect');
             beamEffect.classList.add('active');
 
             // Remove the class after the animation completes
-            setTimeout(() =&gt; {
+            setTimeout(() => {
                 beamEffect.classList.remove('active');
             }, 2000); // Match this duration with the transition time in CSS
         };
