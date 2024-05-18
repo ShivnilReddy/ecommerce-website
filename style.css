@@ -582,6 +582,15 @@ button {
 
 
 /* Order Confirmation Page */
+
+.confirmation-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
 .confirmation-container {
     max-width: 600px;
     padding: 20px;
