@@ -297,6 +297,12 @@ footer {
     padding: 20px;
 }
 
+.cart-container h1 {
+    color: #4A235A; /* Dark purple for the header text */
+    margin-bottom: 20px; /* Space below the header */
+    text-align: center; /* Center the header text */
+}
+
 .cart-items {
     margin-bottom: 20px;
 }
@@ -305,7 +311,7 @@ footer {
     text-align: right;
 }
 
-/* Cart item styles */
+
 .cart-item {
     display: flex;
     align-items: center;
@@ -321,6 +327,25 @@ footer {
     height: 100px ; /* Adjust height */
     margin-right: 10px;
     object-fit: cover;
+}
+
+.cart-summary button#checkout {
+    background-color: #8E44AD;/* Purple background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding inside the button */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    width: auto; /* Auto width */
+    max-width: 200px; /* Maximum width */
+    align-self: center; /* Center the button within the summary */
+}
+
+.cart-summary button#checkout:hover {
+    background-color: #9B59B6; /* Darker shade of purple on hover */
 }
 
 /* Profile Page */
