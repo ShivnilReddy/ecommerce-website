@@ -185,4 +185,4 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
             }, 2000); // Match this duration with the transition time in CSS
         };
     }
-;
+);
