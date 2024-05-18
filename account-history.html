@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account History</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="navbar">
+        <img src="resources/Logo.png" alt="Logo" class="logo">
+        <ul id="menu">
+            <li><a href="index.html" class="menu-item">HOME</a></li>
+            <li><a href="store.html" class="menu-item">TEAM STORE</a></li>
+            <li><a href="profile.html" class="menu-item">PROFILE</a></li>
+            <li><a href="account-history.html" class="menu-item">ACCOUNT HISTORY</a></li>
+        </ul>
+    </nav>
+    <div class="history-container">
+        <h1>Account History</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-history">
+                <!-- Transactions will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="account-history.js"></script>
+</body>
+</html>
