@@ -251,7 +251,7 @@ footer {
 
 
 
-// Store Page //
+/* Store Page */
 
 .store-container {
     column-count: 3;
@@ -292,15 +292,15 @@ footer {
     background-color: #9B59B6;
 }
 
-// Cart Page //
+/* Cart Page */
 .cart-container {
     padding: 20px;
 }
 
 .cart-container h1 {
-    color: #4A235A; 
-    margin-bottom: 20px; 
-    text-align: center; 
+    color: #4A235A; /* Dark purple for the header text */
+    margin-bottom: 20px; /* Space below the header */
+    text-align: center; /* Center the header text */
 }
 
 .cart-items {
@@ -323,32 +323,32 @@ footer {
 }
 
 .cart-item-image {
-    width: 100px ; 
-    height: 100px ; 
+    width: 100px ; /* Adjust width */
+    height: 100px ; /* Adjust height */
     margin-right: 10px;
     object-fit: cover;
 }
 
 .cart-summary button#checkout {
-    background-color: #8E44AD;
-    color: white; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 4px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    font-weight: bold; 
-    transition: background-color 0.3s; 
-    width: auto; 
-    max-width: 200px; 
-    align-self: center;
+    background-color: #8E44AD;/* Purple background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding inside the button */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    width: auto; /* Auto width */
+    max-width: 200px; /* Maximum width */
+    align-self: center; /* Center the button within the summary */
 }
 
 .cart-summary button#checkout:hover {
-    background-color: #9B59B6; 
+    background-color: #9B59B6; /* Darker shade of purple on hover */
 }
 
-// Profile Page //
+/* Profile Page */
 .profile-container {
     max-width: 600px;
     margin: 50px auto;
@@ -361,7 +361,7 @@ footer {
 
 .profile-container h1 {
     text-align: center;
-    color: #4A235A; 
+    color: #4A235A; /* Dark purple */
     margin-bottom: 20px;
 }
 
@@ -377,7 +377,7 @@ footer {
 
 .profile-links a {
     text-decoration: none;
-    color: #4A235A; 
+    color: #4A235A; /* Dark purple */
     font-size: 18px;
     font-weight: bold;
     border: 2px solid #4A235A;
@@ -400,16 +400,16 @@ footer {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
-    display: block; 
-    margin: 100px auto 0; 
+    display: block; /* Make the button block-level */
+    margin: 100px auto 0; /* Center the button and add space above it */
     text-align: center;
 }
 
 .logout-button:hover {
-    background-color: #512E5F; 
+    background-color: #512E5F; /* Darker shade of purple */
     color: #fff;}
 
-// Login Page //
+/* Login Page */
 .login-container {
     padding: 20px;
 }
@@ -442,7 +442,7 @@ footer {
     background-color: #9B59B6;
 }
 
-// General button styles //
+/* General button styles */
 button {
     padding: 10px 20px;
     border: none;
@@ -472,7 +472,7 @@ button {
 .remove-from-cart:hover {
     background-color: #d32f2f;
 }
-// Notification styles //
+/* Notification styles */
 .notification {
     display: none;
     position: fixed;
@@ -489,7 +489,7 @@ button {
 .notification.show {
     display: block;
 }
-// Beam Effect Styles //
+/* Beam Effect Styles */
 .beamEffect {
     position: fixed;
     top: 0;
@@ -511,9 +511,9 @@ button {
 
 
 
+//checkout.html
 
-
-// Checkout Page //
+/* Checkout Page */
 .checkout-container {
     max-width: 600px;
     margin: 50px auto;
@@ -526,7 +526,7 @@ button {
 }
 
 .checkout-container h1 {
-    color: #4A235A; 
+    color: #4A235A; /* Dark purple */
     margin-bottom: 20px;
     text-align: center;
 }
@@ -578,47 +578,4 @@ button {
     color: #333;
     font-size: 18px;
     width: calc(100% - 40px);
-}
-
-// Order Confirmation Page //
-.confirmation-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ccc;
-    text-align: center;
-}
-
-.confirmation-container h1 {
-    color: #4A235A; /* Dark purple */
-    margin-bottom: 20px;
-        text-align: center;
-}
-
-.confirmation-container p {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 20px;
-        text-align: center;
-}
-
-.confirmation-container .btn {
-    background-color: #8E44AD; 
-    color: white; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 4px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    font-weight: bold; 
-    text-decoration: none; 
-    transition: background-color 0.3s; 
-    text-align: center;
-}
-
-.confirmation-container .btn:hover {
-    background-color: #9B59B6; 
 }
