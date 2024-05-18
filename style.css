@@ -595,7 +595,7 @@ button {
 .confirmation-container h1 {
     color: #4A235A; /* Dark purple */
     margin-bottom: 20px;
-}
+    text-align: center;}
 
 .confirmation-container p {
     font-size: 18px;
