@@ -183,6 +183,6 @@ document.addEventListener('DOMContentLoaded', () =&gt; {
             setTimeout(() =&gt; {
                 beamEffect.classList.remove('active');
             }, 2000); // Match this duration with the transition time in CSS
-        });
+        };
     }
-});
+;
